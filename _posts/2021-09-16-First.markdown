@@ -9,9 +9,7 @@ author: Tony Wang
 My first post.
 
 Do equations work? 
-$$
-x + y = 1 \quad \int_\Omega A(x,u,\nabla u) \: dx = f
-$$
+$$x + y = 1 \quad \int_\Omega A(x,u,\nabla u) \: dx = f$$
 
 
 
