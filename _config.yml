@@ -18,16 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: TW's Site
-email: your-email@example.com
+title: TW's Home
+email: tonywang205 (at) yahoo (dot) com (dot) au
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+    Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond. 
+    Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+LinkedIn: https://www.linkedin.com/in/tony-wang-9482b814a/
+Github username:  twan3617
 
 # Build settings
 theme: minima
