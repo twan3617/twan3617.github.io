@@ -1,5 +1,6 @@
 ---
 layout: post
+mathjax: true
 title:  "Introduction"
 date:   2021-09-29 4:28pm  +1000
 categories: Introductions
