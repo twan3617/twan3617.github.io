@@ -1,16 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-09-30T12:53:51+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">TW’s Home</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">Introduction</title><link href="http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about.html" rel="alternate" type="text/html" title="Introduction" /><published>2021-09-29T16:28:00+10:00</published><updated>2021-09-29T16:28:00+10:00</updated><id>http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about</id><content type="html" xml:base="http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about.html">&lt;p&gt;Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following:
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-15T18:33:10+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">Introduction</title><link href="http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about.html" rel="alternate" type="text/html" title="Introduction" /><published>2021-09-29T16:28:00+10:00</published><updated>2021-09-29T16:28:00+10:00</updated><id>http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about</id><content type="html" xml:base="http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about.html">Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following:
 Basic distributions/statistics summary
 Bayesian inference introduction
-Basic machine learning algorithms&lt;/p&gt;
+Basic machine learning algorithms
 
-&lt;p&gt;To be honest, I still have a lot to learn before I can confidently write on these topics.&lt;/p&gt;
+To be honest, I still have a lot to learn before I can confidently write on these topics. 
 
-&lt;p&gt;The Bayesian Framework:&lt;/p&gt;
 
-\[\pi(\theta \mid x) = \frac{\pi(x \mid \theta)\pi(\theta)}{m(x)}\]
+The Bayesian Framework:
 
-&lt;p&gt;where \(m(x)\) represents the marginal distribution of \(x\), \(\pi(\theta)\) is the prior distribution of the parameters \(\theta\) and \(\pi(x\mid \theta)\) is the likelihood function. Beware, however, that we are viewing \(\pi(x\mid \theta)\) as a function of the parameters \(\theta\) and the data \(x\) is fixed; often, this dependence is made explicit by writing 
-\(\pi(x\mid \theta) = L(\theta; x).\)&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Introductions" /><summary type="html">Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following: Basic distributions/statistics summary Bayesian inference introduction Basic machine learning algorithms</summary></entry><entry><title type="html">Introduction</title><link href="http://localhost:4000/introductions/2021/09/16/First.html" rel="alternate" type="text/html" title="Introduction" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/introductions/2021/09/16/First</id><content type="html" xml:base="http://localhost:4000/introductions/2021/09/16/First.html">&lt;p&gt;My first post.&lt;/p&gt;
+$$ \pi(\theta \mid x) = \frac{\pi(x \mid \theta)\pi(\theta)}{m(x)}
+$$
 
-&lt;p&gt;Do equations work? 
-\(x + y = 1 \quad \int_\Omega A(x,u,\nabla u) : dx = f\)&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Introductions" /><summary type="html">My first post.</summary></entry></feed>
+where $$m(x)$$ represents the marginal distribution of $$x$$, $$\pi(\theta)$$ is the prior distribution of the parameters $$\theta$$ and $$\pi(x\mid \theta)$$ is the likelihood function. Beware, however, that we are viewing $$\pi(x\mid \theta)$$ as a function of the parameters $$\theta$$ and the data $$x$$ is fixed; often, this dependence is made explicit by writing 
+$$ \pi(x\mid \theta) = L(\theta; x).
+$$</content><author><name>Tony Wang</name></author><category term="Introductions" /><summary type="html">Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following: Basic distributions/statistics summary Bayesian inference introduction Basic machine learning algorithms</summary></entry><entry><title type="html">The Mysteries of MathJax: (Macros and Numbering)</title><link href="http://localhost:4000/blog/hosting/2021/09/16/First.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: (Macros and Numbering)" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/First</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/First.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
+&lt;p&gt;I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts  (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!&lt;/p&gt;
+
+&lt;h2 id=&quot;system-requirements&quot;&gt;System Requirements&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Currently working on MacOS Monterey 12.0.1, although this entire process works for at least MacOS 11.X. I believe Windows is not (officially) supported by Jekyll currently, although it could still be made to run without many tweaks.&lt;/li&gt;
+  &lt;li&gt;MathJax 3.XX (Importantly, the syntax changed between MathJax 2.XX and 3.XX. If you are just getting started, this shouldn’t be important.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;basics&quot;&gt;Basics&lt;/h2&gt;
+&lt;p&gt;This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll. I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I’m using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar), and the method section below relies on this.&lt;/p&gt;
+
+&lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Create mathjax.html inside your_site/_includes with the following code:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;text/javascript&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MathJax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ams&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;packages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;base&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ams&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;newcommand&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;configmacros&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;macros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;RR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;mathbb{R}}&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;ddx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;frac{d#2}{d#1}&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;ui/menu&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[tex]/ams&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;  
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;text/javascript&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;MathJax-script&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The code with the URL&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;text/javascript&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;MathJax-script&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;tells your server where to find the MathJax3 scripts. The code starting with window.MathJax is where you define your configurations. In particular, “tags: ‘ams’” numbers all equations in a specific equation format (you can use ‘all’ as well, which just numbers everything), “packages: …” is where you include TeX packages (importantly, in order for macros to run, you must include configmacros in packages), and finally, “macros: …”, where you can define custom macros that can be read. Macros are in the form&lt;/p&gt;
+
+\[\text{command: &apos;TeX output&apos;}\]
+
+&lt;p&gt;so in the code above, typing \RR in an equation setting would produce the math blackboard font \(\RR\).&lt;/p&gt;
+
+&lt;p&gt;If you &lt;em&gt;don’t&lt;/em&gt; want MathJax to run on every page, you can include an if statement in the scripts as follows:&lt;/p&gt;
+
+\[\{\% \text{  if page.mathjax = true  }  \%\}\]
+
+\[\text{code script from above}\]
+
+\[\{\% \text{  endif  } \%\}\]
+
+&lt;p&gt;In the front matter of your html files (that is, the code between the triple dashes), include the line&lt;/p&gt;
+
+\[\text{mathjax: true}\]
+
+&lt;p&gt;Finally, under your_site/default.html, include the line&lt;/p&gt;
+
+\[\text{\{\% include mathjax.html \%\}}\]
+
+&lt;p&gt;in-between the HTML tags, so that every page which uses the default layout can read the code in mathjax.html. This should allow equations to be rendered!&lt;/p&gt;
+
+&lt;h1 id=&quot;testing-equation-numbering-and-macros&quot;&gt;Testing Equation Numbering and Macros&lt;/h1&gt;
+&lt;p&gt;Note that for in-line equations, unlike LaTeX, you need to type two dollar signs in order for your markdown reader to render the equation. If you want to type in an equation format, you should put the dollar signs on a new line.&lt;/p&gt;
+
+&lt;p&gt;Below, we write an equation, give it a numbering, then reference the equation later.
+\begin{equation}
+\int_{\Omega} A(x, u, \nabla u) \phi \: dx = 0,    \label{123}
+\end{equation}
+In equation \eqref{123}, the equality holds for all \(\phi \in C_c^\infty(\Omega)\) (the set of compactly supported infinitely differentiable functions in \(\Omega \subseteq \RR\)).&lt;/p&gt;
+
+&lt;p&gt;We have also defined macros that replace \RR with \(\RR\) and \ddx{f(x)} with \(\ddx{f(x)}\):
+\begin{align}
+\RR \quad \ddx{f(x)}
+\end{align}&lt;/p&gt;
+
+&lt;p&gt;As an aside, there is also a code highlighter: given a language, Jekyll can parse and highlight keywords in the code and return a nicely formatted block:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To get this, simply type&lt;/p&gt;
+
+&lt;p&gt;% highlight language %&lt;/p&gt;
+
+&lt;p&gt;print(“hello world”)&lt;/p&gt;
+
+&lt;p&gt;% endhighlight %&lt;/p&gt;
+
+&lt;p&gt;while enclosing the top and bottom lines in braces {}.&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Blog" /><category term="Hosting" /><summary type="html">Site Setup I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!</summary></entry></feed>

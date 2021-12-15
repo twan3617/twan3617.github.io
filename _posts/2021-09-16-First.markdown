@@ -1,16 +1,121 @@
 ---
 layout: post
 mathjax: true
-title:  "Introduction"
+title:  "The Mysteries of MathJax: (Macros and Numbering)"
 date:   2021-09-16 23:34:48 +1000
-categories: Introductions
+categories: Blog Hosting
 author: Tony Wang 
 ---
 
-My first post.
+# Site Setup 
+I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts  (all slightly - but not completely - obsolete now) and dead-ends, and I don't want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don't, so here goes!
 
-Do equations work? 
-\\(x + y = 1 \quad \int_\Omega A(x,u,\nabla u) \: dx = f\\)
+## System Requirements
+- Currently working on MacOS Monterey 12.0.1, although this entire process works for at least MacOS 11.X. I believe Windows is not (officially) supported by Jekyll currently, although it could still be made to run without many tweaks.
+- MathJax 3.XX (Importantly, the syntax changed between MathJax 2.XX and 3.XX. If you are just getting started, this shouldn't be important.)
 
+## Basics
+This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll. I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I'm using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar), and the method section below relies on this. 
 
+## Method
+1. Create mathjax.html inside your_site/_includes with the following code: 
 
+{% highlight javascript %}
+
+{% if page.mathjax %}
+
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      packages: ['base', 'ams', 'newcommand','configmacros'],
+      macros: {
+        RR: '{\\mathbb{R}}',
+        ddx: ['\\frac{d#2}{d#1}', 2, 'x']
+      }
+    },
+    loader: {
+      load: ['ui/menu', '[tex]/ams']
+    }
+  };
+  </script>
+  
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+{% endif %}
+
+{% endhighlight %}
+
+The code with the URL 
+
+{% highlight javascript %}
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+{% endhighlight %}
+
+tells your server where to find the MathJax3 scripts. The code starting with window.MathJax is where you define your configurations. In particular, "tags: 'ams'" numbers all equations in a specific equation format (you can use 'all' as well, which just numbers everything), "packages: ..." is where you include TeX packages (importantly, in order for macros to run, you must include configmacros in packages), and finally, "macros: ...", where you can define custom macros that can be read. Macros are in the form 
+
+$$
+\text{command: 'TeX output'}
+$$
+
+so in the code above, typing \\RR in an equation setting would produce the math blackboard font $$\RR$$. 
+
+If you _don't_ want MathJax to run on every page, you can include an if statement in the scripts as follows:
+
+$$
+\{\% \text{  if page.mathjax = true  }  \%\}
+$$
+
+$$
+\text{code script from above}
+$$
+
+$$
+\{\% \text{  endif  } \%\}
+$$
+ 
+In the front matter of your html files (that is, the code between the triple dashes), include the line 
+
+$$
+\text{mathjax: true}
+$$
+
+Finally, under your_site/default.html, include the line 
+
+$$\text{\{\% include mathjax.html \%\}}
+$$
+
+in-between the HTML tags, so that every page which uses the default layout can read the code in mathjax.html. This should allow equations to be rendered! 
+
+# Testing Equation Numbering and Macros
+Note that for in-line equations, unlike LaTeX, you need to type two dollar signs in order for your markdown reader to render the equation. If you want to type in an equation format, you should put the dollar signs on a new line. 
+
+Below, we write an equation, give it a numbering, then reference the equation later.
+\begin{equation}
+\int_{\Omega} A(x, u, \nabla u) \phi \\: dx = 0,    \label{123}
+\end{equation}
+In equation \eqref{123}, the equality holds for all $$\phi \in C_c^\infty(\Omega)$$ (the set of compactly supported infinitely differentiable functions in $$ \Omega \subseteq \RR$$).
+
+We have also defined macros that replace \\RR with $$ \RR$$ and \\ddx{f(x)} with $$\ddx{f(x)}$$:
+\begin{align}
+\\RR \quad \\ddx{f(x)}
+\end{align}
+
+As an aside, there is also a code highlighter: given a language, Jekyll can parse and highlight keywords in the code and return a nicely formatted block:
+{% highlight python %}
+def function(x):
+  return(x)
+{% endhighlight %}
+
+To get this, simply type 
+
+% highlight language %
+
+print("hello world")
+
+% endhighlight %
+
+while enclosing the top and bottom lines in braces {}.

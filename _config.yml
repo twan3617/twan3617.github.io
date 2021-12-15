@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: TW's Home
+title: A Mathematical Structure named "Blog"
 email: tonywang205 (at) yahoo (dot) com (dot) au
 description: >- # this means to ignore newlines until "baseurl:"
     Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond. 
@@ -32,6 +32,7 @@ Github username:  twan3617
 theme: minima
 plugins:
   - jekyll-feed
+markdown: kramdown 
 
 # Exclude from processing.
 # The following items will not be processed, by default.
