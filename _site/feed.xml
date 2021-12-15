@@ -1,19 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-15T18:33:10+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">Introduction</title><link href="http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about.html" rel="alternate" type="text/html" title="Introduction" /><published>2021-09-29T16:28:00+10:00</published><updated>2021-09-29T16:28:00+10:00</updated><id>http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about</id><content type="html" xml:base="http://localhost:4000/introductions/2021/09/29/Ideas_to_write_about.html">Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following:
-Basic distributions/statistics summary
-Bayesian inference introduction
-Basic machine learning algorithms
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-15T19:04:45+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">The Basics of Measure Theory</title><link href="http://localhost:4000/mathematics/2021/09/29/Ideas_to_write_about.html" rel="alternate" type="text/html" title="The Basics of Measure Theory" /><published>2021-09-29T16:28:00+10:00</published><updated>2021-09-29T16:28:00+10:00</updated><id>http://localhost:4000/mathematics/2021/09/29/Ideas_to_write_about</id><content type="html" xml:base="http://localhost:4000/mathematics/2021/09/29/Ideas_to_write_about.html">&lt;p&gt;Hi! Currently under construction.&lt;/p&gt;
+&lt;h1 id=&quot;motivations&quot;&gt;Motivations&lt;/h1&gt;
 
-To be honest, I still have a lot to learn before I can confidently write on these topics. 
+&lt;h1 id=&quot;measure-theory&quot;&gt;Measure Theory&lt;/h1&gt;
 
+&lt;h2 id=&quot;notation&quot;&gt;Notation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Write \(\Omega\) to denote an arbitrary set, \(\mathbb{R}^+\) to denote the interval \([0, \infty) \cup \infty = [0, \infty]\).&lt;/li&gt;
+  &lt;li&gt;\(\mathcal{A}\) denotes a $\sigma$-algebra on \(\Omega\).&lt;/li&gt;
+&lt;/ul&gt;
 
-The Bayesian Framework:
+&lt;p&gt;&lt;strong&gt;Definition 1&lt;/strong&gt;: A function \(\mu : \mathcal{A} \to \mathbb{R}^+\) is a &lt;em&gt;measure&lt;/em&gt; if&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;\(\mu(\emptyset) = 0\),&lt;/li&gt;
+  &lt;li&gt;The function \(\mu\) satisfies countable additivity: for any countable collection \(\{U_n\}_{n \in \mathbb{N}} \subset \mathcal{A}\), we have&lt;/li&gt;
+&lt;/ol&gt;
 
-$$ \pi(\theta \mid x) = \frac{\pi(x \mid \theta)\pi(\theta)}{m(x)}
-$$
-
-where $$m(x)$$ represents the marginal distribution of $$x$$, $$\pi(\theta)$$ is the prior distribution of the parameters $$\theta$$ and $$\pi(x\mid \theta)$$ is the likelihood function. Beware, however, that we are viewing $$\pi(x\mid \theta)$$ as a function of the parameters $$\theta$$ and the data $$x$$ is fixed; often, this dependence is made explicit by writing 
-$$ \pi(x\mid \theta) = L(\theta; x).
-$$</content><author><name>Tony Wang</name></author><category term="Introductions" /><summary type="html">Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following: Basic distributions/statistics summary Bayesian inference introduction Basic machine learning algorithms</summary></entry><entry><title type="html">The Mysteries of MathJax: (Macros and Numbering)</title><link href="http://localhost:4000/blog/hosting/2021/09/16/First.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: (Macros and Numbering)" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/First</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/First.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
+\[\mu(\cup_n U_n) = \sum_{n=0}^\infty \mu(U_n)\]</content><author><name>Tony Wang</name></author><category term="Mathematics" /><summary type="html">Hi! Currently under construction. Motivations</summary></entry><entry><title type="html">The Mysteries of MathJax: (Macros and Numbering)</title><link href="http://localhost:4000/blog/hosting/2021/09/16/First.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: (Macros and Numbering)" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/First</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/First.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
 &lt;p&gt;I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts  (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!&lt;/p&gt;
 
 &lt;h2 id=&quot;system-requirements&quot;&gt;System Requirements&lt;/h2&gt;
@@ -23,7 +25,24 @@ $$</content><author><name>Tony Wang</name></author><category term="Introductions
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;basics&quot;&gt;Basics&lt;/h2&gt;
-&lt;p&gt;This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll. I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I’m using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar), and the method section below relies on this.&lt;/p&gt;
+&lt;p&gt;This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll.&lt;/p&gt;
+
+&lt;p&gt;I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I’m using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar).&lt;/p&gt;
+
+&lt;p&gt;There were some “gotchas” that took ages for me to figure out during the whole process. I will add them in as I remember them:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;When installing (or updating) Ruby/Jekyll, if your system is throwing errors about not being able to find the installation &lt;em&gt;despite it being right in front of your eyes&lt;/em&gt;, you may need to alter your PATH variable (if the installation is not in PATH, then the OS will never be able to find the right folders).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For example, let’s suppose I am installing Ruby 3.0.0. Since I am using zsh, I would go to ~/.zshrc and, with my favourite text editor (struggling to learn how to use vim!), paste in&lt;/p&gt;
+
+\[\text{export PATH=&quot;/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:\$PATH&quot;}\]
+
+&lt;p&gt;at the end of the file.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use bundle exec jekyll serve to start up the server: find your website at localhost:4000.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;method&quot;&gt;Method&lt;/h2&gt;
 &lt;ol&gt;

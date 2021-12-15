@@ -1,26 +1,25 @@
 ---
 layout: post
 mathjax: true
-title:  "Introduction"
+title:  "The Basics of Measure Theory"
 date:   2021-09-29 4:28pm  +1000
-categories: Introductions
+categories: Mathematics
 author: Tony Wang
 ---
-Of course, one must have some ideas on what to write on before beginning to write! I am thinking of the following:
-Basic distributions/statistics summary
-Bayesian inference introduction
-Basic machine learning algorithms
-
-To be honest, I still have a lot to learn before I can confidently write on these topics. 
+Hi! Currently under construction. 
+# Motivations 
 
 
-The Bayesian Framework:
+# Measure Theory
 
-$$ \pi(\theta \mid x) = \frac{\pi(x \mid \theta)\pi(\theta)}{m(x)}
+## Notation 
+- Write $$\Omega$$ to denote an arbitrary set, $$\mathbb{R}^+$$ to denote the interval $$[0, \infty) \cup \infty = [0, \infty]$$. 
+- $$ \mathcal{A}$$ denotes a $\sigma$-algebra on $$\Omega$$.
+
+__Definition 1__: A function $$\mu : \mathcal{A} \to \mathbb{R}^+$$ is a _measure_ if 
+1. $$\mu(\emptyset) = 0$$, 
+2. The function $$\mu$$ satisfies countable additivity: for any countable collection $$\{U_n\}_{n \in \mathbb{N}} \subset \mathcal{A}$$, we have 
+
+$$\mu(\cup_n U_n) = \sum_{n=0}^\infty \mu(U_n)
 $$
 
-where $$m(x)$$ represents the marginal distribution of $$x$$, $$\pi(\theta)$$ is the prior distribution of the parameters $$\theta$$ and $$\pi(x\mid \theta)$$ is the likelihood function. Beware, however, that we are viewing $$\pi(x\mid \theta)$$ as a function of the parameters $$\theta$$ and the data $$x$$ is fixed; often, this dependence is made explicit by writing 
-$$ \pi(x\mid \theta) = L(\theta; x).
-$$
-
- 

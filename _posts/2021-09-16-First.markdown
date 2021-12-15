@@ -15,7 +15,22 @@ I decided to write this post as a reminder to future-me (and anyone else who mig
 - MathJax 3.XX (Importantly, the syntax changed between MathJax 2.XX and 3.XX. If you are just getting started, this shouldn't be important.)
 
 ## Basics
-This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll. I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I'm using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar), and the method section below relies on this. 
+This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll. 
+
+I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I'm using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar). 
+
+There were some "gotchas" that took ages for me to figure out during the whole process. I will add them in as I remember them:
+- When installing (or updating) Ruby/Jekyll, if your system is throwing errors about not being able to find the installation _despite it being right in front of your eyes_, you may need to alter your PATH variable (if the installation is not in PATH, then the OS will never be able to find the right folders). 
+
+For example, let's suppose I am installing Ruby 3.0.0. Since I am using zsh, I would go to \~/.zshrc and, with my favourite text editor (struggling to learn how to use vim!), paste in
+
+$$
+\text{export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:\$PATH"}
+$$
+
+at the end of the file. 
+
+- Use bundle exec jekyll serve to start up the server: find your website at localhost:4000.
 
 ## Method
 1. Create mathjax.html inside your_site/_includes with the following code: 
