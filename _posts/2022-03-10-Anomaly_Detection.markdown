@@ -17,16 +17,12 @@ In the future, I will write up my learnings from this project and on anomaly det
 # Images
 Some cool images from our work! 
 
-{% figure caption:"Figure 1: With the appropriate data transformations, we can convert incoming time series signals from a sensor array into an anomaly predictor, with each sensor producing each one of these curves. The peaks of the curves correspond to likely anomalous transitions." %}
 ![TOP_PHOTO](/assets/CAC_responses.jpg){: width="100%"}
-{% endfigure %}
+Figure 1: With the appropriate data transformations, we can convert incoming time series signals from a sensor array into an anomaly predictor, with each sensor producing each one of these curves. The peaks of the curves correspond to likely anomalous transitions.
 
-
-{% figure caption:"Figure 2: By leveraging multiple sources of data (in our experiments, 24 sensors worth of data), we can use data averaging techniques to combine the information effectively and obtain a smooth anomaly predictor that is robust against noise."%}
 ![TOP_PHOTO](/assets/combined_CAC_24.jpg){: width="100%"}
-{% endfigure %}
 
+Figure 2: By leveraging multiple sources of data (in our experiments, 24 sensors worth of data), we can use data averaging techniques to combine the information effectively and obtain a smooth anomaly predictor that is robust against noise.
 
-{% figure caption:" Figure 3: We generalised our methods to work in real time by transforming sensor data in batches as it arrives. Peaks correspond to detected anomalies. Red lines correspond to the theoretical positions where an anomalous transition has taken place."%}
 ![TOP_PHOTO](/assets/smoothed_CAC_anim.gif){: width="100%"}
-{% endfigure %}
+Figure 3: We generalised our methods to work in real time by transforming sensor data in batches as it arrives. Peaks correspond to detected anomalies. Red lines correspond to the theoretical positions where an anomalous transition has taken place.
