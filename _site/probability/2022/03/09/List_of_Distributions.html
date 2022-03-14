@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      packages: ['base', 'ams', 'newcommand','configmacros'],
+      macros: {
+        RR: '{\\mathbb{R}}',
+        ddx: ['\\frac{d#2}{d#1}', 2, 'x']
+      }
+    },
+    loader: {
+      load: ['ui/menu', '[tex]/ams']
+    }
+  };
+  </script>
+  
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Common Distributions | A Mathematical Structure named “Blog”</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Common Distributions" />
+<meta name="author" content="Tony Wang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference." />
+<meta property="og:description" content="In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference." />
+<link rel="canonical" href="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html" />
+<meta property="og:url" content="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html" />
+<meta property="og:site_name" content="A Mathematical Structure named “Blog”" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-09T01:44:00+11:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Common Distributions" />
+<script type="application/ld+json">
+{"description":"In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.","headline":"Common Distributions","dateModified":"2022-03-09T01:44:00+11:00","datePublished":"2022-03-09T01:44:00+11:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/probability/2022/03/09/List_of_Distributions.html"},"url":"http://localhost:4000/probability/2022/03/09/List_of_Distributions.html","author":{"@type":"Person","name":"Tony Wang"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="A Mathematical Structure named &quot;Blog&quot;" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">A Mathematical Structure named &quot;Blog&quot;</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Common Distributions</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-03-09T01:44:00+11:00" itemprop="datePublished">Mar 9, 2022
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Tony Wang</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.</p>
+
+<p>Each distribution will have its probability mass function (pmf) or probability density function (pdf) listed, mean and variance, and some notes on relations to other distributions and derivations.</p>
+
+<h1 id="measure-theoretic-view">Measure-Theoretic View</h1>
+<p>Suppose we are working with a process that has sample space \(\Omega\), set of measurable events \(\mathcal{F}\) and probability measure \(P\). A random variable \(X\) (taking values in \(\overline{\mathbb{R}} = \mathbb{R} \cup \{\infty\}\)) is just a measurable function \(X: \Omega \to \overline{\mathbb{R}}\). The expectation (or <em>mean</em>) of \(X\) is the (Lebesgue) integral 
+\(\int_\Omega f \: dP,\) 
+defined in the usual way (this is discussed in a separate blog post). The <em>probability distribution</em> of \(X\) is the function \(P \circ X^{-1} : \overline{\mathbb{R}} \to [0,1]\) (with respect to the usual Borel \(\sigma\)-algebra). The probability distribution describes how likely the random variable \(X\) is to take on some set of values. The <em>distribution function</em> (or <em>cumulative distribution function</em>) of \(X\) is defined as \(F(x) := $(P \circ X^{-1})((-\infty, x]))\), the probability that \(X\) takes on values up to and including \(x\).</p>
+
+<p>Finally, a <em>probability density</em> of \(X\) on \(\mathbb{R}\) is defined as follows. For a non-negative measurable \(f \geq 0\) on \((\Omega, \mathcal{F}, P)\), we can write \(f \cdot P\) to define a new measure \(\mu\) by</p>
+
+<p>\(\mu (A) = (f \cdot P) (A) = \int_A f \: dP \quad \text{for all } A \in \mathcal{F}.\)
+We call \(f\) the \(P\)-density of \(\mu\). If the function \(f\) is the density of \(P \circ X^{-1}\) with respect to the Lebesgue measure on \(\mathbb{R}\), then \(f\) is called the <em>probability density function</em> of \(X\).</p>
+
+<p>The rest: to be completed!</p>
+<h1 id="discrete-probability-distributions">Discrete Probability Distributions</h1>
+
+<h2 id="bernoulli-and-binomial-distributions">Bernoulli and Binomial Distributions</h2>
+
+<h2 id="geometric-distribution">Geometric Distribution</h2>
+
+<h2 id="hypergeometric-distribution">Hypergeometric Distribution</h2>
+
+<h2 id="poisson-distribution">Poisson Distribution</h2>
+
+<h1 id="continuous-probability-distributions">Continuous Probability Distributions</h1>
+
+<h2 id="normal-distribution">Normal Distribution</h2>
+
+<h2 id="beta-distribution">Beta Distribution</h2>
+
+<h2 id="laplace-distribution">Laplace Distribution</h2>
+
+<h2 id="exponential-distribution">Exponential Distribution</h2>
+
+<h2 id="gamma-distribution">Gamma Distribution</h2>
+
+
+  </div><a class="u-url" href="/probability/2022/03/09/List_of_Distributions.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">A Mathematical Structure named &quot;Blog&quot;</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">A Mathematical Structure named &quot;Blog&quot;</li><li><a class="u-email" href="mailto:tonywang205@yahoo.com.au">tonywang205@yahoo.com.au</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
+

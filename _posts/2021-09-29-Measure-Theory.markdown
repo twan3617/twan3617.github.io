@@ -1,0 +1,30 @@
+---
+layout: post
+mathjax: true
+title:  "The Basics of Measure-Theoretic Probability Theory"
+date:   2022-03-09 12:44am  +1000
+categories: Probability
+author: Tony Wang
+---
+# Background 
+As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, _the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem_...), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a _stopping time_ was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!
+
+# Motivations 
+Everyone knows what _probability_ means, in some intuitive sense. Primary schoolers learn how there's a 50% chance rain on any given day (okay - at the time of writing, a years worth of rain has fallen in many areas in Australia, two weeks in a row. Maybe that's not quite true...), first year undergrads learn about coin-flipping experiments and the binomial distribution, somewhere along the way we become acquainted with other common distributions (for example, the normal, exponential, Poisson, Gamma, beta families, in no particular order) and how we can use them to create simple models for many real-world situations, and at some point we just cross our fingers and hope all of our sums and integrals converge and everything is well-behaved. After all, as statistics practitioners, we can just leave that to the theoreticians, right?
+
+It's certainly a common, if not justified, viewpoint to take - after all, we only have a finite amount of time in a day, and we couldn't learn everything there is to know in this world. Personally speaking, I think my time is well-served by digging deep into the foundations, the formalisms and definitions, the bounds and estimates - I don't want to know which levers to pull to make things "work", I want to know _why_ they work. So - here it is!
+
+# The Beginning
+
+_Definition 1_: Let $$\Omega$$ be a set. A $$\sigma$$-algebra $$\mathcal{F}$$ on $$\Omega$$ is a set of subsets of $$\Omega$$ which satisfy the following properties: 
+- $$\mathcal{F}$$ contains the total set $$\Omega$$. 
+- $$\mathcal{F}$$ is closed under complements: for every set $$A \in \mathcal{F}$$, the set $$A^c$$ is in $$\mathcal{F}$$.
+- $$\mathcal{F}$$ is closed under countable unions: for sets $$A_i \in \mathcal{F}$$, $$i \in I \subset \mathbb{N}$$ with $$I$$ a countable index set, we have $$\cup_{i \in I} A_i \in \mathcal{F}$$. 
+
+The $$\sigma$$-algebra is a key player in probability theory: intuitively speaking, it describes the set of events on which we can assign probabilities to (under this formalism, with very reasonable assumptions, we can indeed create "events" that cannot be assigned a probability! We call these "non-measurable" sets.). You can see it intuitively from the definition as well: if we know the probability of some event $$E$$ occurring, then certainly we know the probability of $$E^c$$ occurring. If we konw the probability of a (countable) number of events happening, then we could talk about the union of all these events occurring: that should have a well-defined probability as well.
+
+We also note that $$\sigma$$-algebras are also often called $$\sigma$$-fields in probability theory. We will use these terms interchangeably, although most often calling them $$\sigma$$-algebras (since this term applies in more contexts).
+
+The rest is under construction! Check back later! :) 
+
+

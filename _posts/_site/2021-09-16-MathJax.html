@@ -1,0 +1,112 @@
+<h1 id="site-setup">Site Setup</h1>
+<p>I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts  (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!</p>
+
+<h2 id="system-requirements">System Requirements</h2>
+<ul>
+  <li>Currently working on MacOS Monterey 12.0.1, although this entire process works for at least MacOS 11.X. I believe Windows is not (officially) supported by Jekyll currently, although it could still be made to run without many tweaks.</li>
+  <li>MathJax 3.XX (Importantly, the syntax changed between MathJax 2.XX and 3.XX. If you are just getting started, this shouldn’t be important.)</li>
+</ul>
+
+<h2 id="basics">Basics</h2>
+<p>This site is set up using GitHub Pages, so all the assets are contained within a GitHub repository (see https://github.com/twan3617/twan3617.github.io for the assets running this blog). The code that makes this page work is based on Jekyll, and the basic introduction can be found here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll.</p>
+
+<p>I will assume you have followed the tutorials and managed to set up Jekyll with a  theme that you like (for example, I’m using Minima). If you use the pre-set themes, your file structure should be exactly the same (if not, at least similar).</p>
+
+<p>There were some “gotchas” that took ages for me to figure out during the whole process. I will add them in as I remember them:</p>
+<ul>
+  <li>When installing (or updating) Ruby/Jekyll, if your system is throwing errors about not being able to find the installation <em>despite it being right in front of your eyes</em>, you may need to alter your PATH variable (if the installation is not in PATH, then the OS will never be able to find the right folders).</li>
+</ul>
+
+<p>For example, let’s suppose I am installing Ruby 3.0.0. Since I am using zsh, I would go to ~/.zshrc and, with my favourite text editor (struggling to learn how to use vim!), paste in</p>
+
+\[\text{export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/3.0.0/bin:\$PATH"}\]
+
+<p>at the end of the file.</p>
+
+<ul>
+  <li>Use bundle exec jekyll serve to start up the server: find your website at localhost:4000.</li>
+</ul>
+
+<h2 id="method">Method</h2>
+<ol>
+  <li>Create mathjax.html inside your_site/_includes with the following code:</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span><span class="o">&gt;</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">tex</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">tags</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ams</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">packages</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">base</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ams</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">newcommand</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">configmacros</span><span class="dl">'</span><span class="p">],</span>
+      <span class="na">macros</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">RR</span><span class="p">:</span> <span class="dl">'</span><span class="s1">{</span><span class="se">\\</span><span class="s1">mathbb{R}}</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">ddx</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="se">\\</span><span class="s1">frac{d#2}{d#1}</span><span class="dl">'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">loader</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">load</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">ui/menu</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">[tex]/ams</span><span class="dl">'</span><span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+  <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>  
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">MathJax-script</span><span class="dl">"</span> <span class="k">async</span>
+  <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<p>The code with the URL</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text/javascript</span><span class="dl">"</span> <span class="nx">id</span><span class="o">=</span><span class="dl">"</span><span class="s2">MathJax-script</span><span class="dl">"</span> <span class="k">async</span>
+  <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2">https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js</span><span class="dl">"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/script&gt;</span></code></pre></figure>
+
+<p>tells your server where to find the MathJax3 scripts. The code starting with window.MathJax is where you define your configurations. In particular, “tags: ‘ams’” numbers all equations in a specific equation format (you can use ‘all’ as well, which just numbers everything), “packages: …” is where you include TeX packages (importantly, in order for macros to run, you must include configmacros in packages), and finally, “macros: …”, where you can define custom macros that can be read. Macros are in the form</p>
+
+\[\text{command: 'TeX output'}\]
+
+<p>so in the code above, typing \RR in an equation setting would produce the math blackboard font \(\RR\).</p>
+
+<p>If you <em>don’t</em> want MathJax to run on every page, you can include an if statement in the scripts as follows:</p>
+
+\[\{\% \text{  if page.mathjax = true  }  \%\}\]
+
+\[\text{code script from above}\]
+
+\[\{\% \text{  endif  } \%\}\]
+
+<p>In the front matter of your html files (that is, the code between the triple dashes), include the line</p>
+
+\[\text{mathjax: true}\]
+
+<p>Finally, under your_site/default.html, include the line</p>
+
+\[\text{\{\% include mathjax.html \%\}}\]
+
+<p>in-between the HTML tags, so that every page which uses the default layout can read the code in mathjax.html. This should allow equations to be rendered!</p>
+
+<h1 id="testing-equation-numbering-and-macros">Testing Equation Numbering and Macros</h1>
+<p>Note that for in-line equations, unlike LaTeX, you need to type two dollar signs in order for your markdown reader to render the equation. If you want to type in an equation format, you should put the dollar signs on a new line.</p>
+
+<p>Below, we write an equation, give it a numbering, then reference the equation later.
+\begin{equation}
+\int_{\Omega} A(x, u, \nabla u) \phi \: dx = 0,    \label{123}
+\end{equation}
+In equation \eqref{123}, the equality holds for all \(\phi \in C_c^\infty(\Omega)\) (the set of compactly supported infinitely differentiable functions in \(\Omega \subseteq \RR\)).</p>
+
+<p>We have also defined macros that replace \RR with \(\RR\) and \ddx{f(x)} with \(\ddx{f(x)}\):
+\begin{align}
+\RR \quad \ddx{f(x)}
+\end{align}</p>
+
+<p>As an aside, there is also a code highlighter: given a language, Jekyll can parse and highlight keywords in the code and return a nicely formatted block:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<p>To get this, simply type</p>
+
+<p>% highlight language %</p>
+
+<p>print(“hello world”)</p>
+
+<p>% endhighlight %</p>
+
+<p>while enclosing the top and bottom lines in braces {}.</p>

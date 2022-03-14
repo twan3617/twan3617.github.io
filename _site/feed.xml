@@ -1,21 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-15T19:04:45+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">The Basics of Measure Theory</title><link href="http://localhost:4000/mathematics/2021/09/29/Ideas_to_write_about.html" rel="alternate" type="text/html" title="The Basics of Measure Theory" /><published>2021-09-29T16:28:00+10:00</published><updated>2021-09-29T16:28:00+10:00</updated><id>http://localhost:4000/mathematics/2021/09/29/Ideas_to_write_about</id><content type="html" xml:base="http://localhost:4000/mathematics/2021/09/29/Ideas_to_write_about.html">&lt;p&gt;Hi! Currently under construction.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-14T16:22:20+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">Infinitely Recurring Events occur with Probability Zero</title><link href="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html" rel="alternate" type="text/html" title="Infinitely Recurring Events occur with Probability Zero" /><published>2022-03-14T01:00:00+11:00</published><updated>2022-03-14T01:00:00+11:00</updated><id>http://localhost:4000/probability/2022/03/14/Borel-Cantelli</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html">&lt;p&gt;In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Notation&lt;/em&gt;: We work in an arbitrary measure space \((\Omega, \mathcal{F}, P)\) with \(\{A_n\}_{n \in \mathbb{N}}\) a sequence of measurable sets. While we interpret the measure \(P\) as a probability measure and measurable sets as “events” in the outcome space \(\Omega\), there is no explicit requirement that \(P(\Omega) = 1\) for the theory to work. The expectation \(\mathbb{E}\) refers to the integral operator&lt;/p&gt;
+
+\[\mathbb{E}[f] = \int_\Omega f(\omega) \: dP(\omega).\]
+
+&lt;p&gt;&lt;em&gt;Definition 1&lt;/em&gt;: 
+The limit superior of a sequence of measurable sets \(\{A_n\}_{n \in \mathbb{N}}\) is the set&lt;/p&gt;
+
+\[\limsup_{n \to \infty} A_n := \cap_{n=1}^\infty \cup_{k \geq n} A_k.\]
+
+&lt;p&gt;Intuitively speaking, the limit superior contains the set of events \(A_n\) which occur infinitely often - indeed, any events which occur finitely often can only be contained within a finite number of the unions \(\cup_{k \geq n} A_k\), and hence cannot be in the intersection of all of those unions. Going off of this intuition, probability theorists may also write this as \(A_n \text{i.o}\), standing for \(A_n\) infinitely often.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Definition 2&lt;/em&gt;:
+A measure \(P\) is said to dominate a measure \(Q\) (written \(P &amp;gt;&amp;gt; Q\)) if&lt;/p&gt;
+
+\[P(A) = 0 \implies Q(A) = 0.\]
+
+&lt;p&gt;&lt;em&gt;Lemma 1 (Borel-Cantelli Lemma)&lt;/em&gt;: 
+Suppose \(\sum_{k=1}^n \mathbb{E}[A_n] &amp;lt; \infty\). Then&lt;/p&gt;
+
+\[P(\limsup_{n \to \infty} A_n) := P(\cap_{n=1}^\infty \cup_{k \geq n}A_k) = 0.\]
+
+&lt;p&gt;&lt;em&gt;Proof&lt;/em&gt;: Note that \(\cup_{k \geq n}A_k\) is a decreasing sequence of sets in \(n\), with \(\cup_{k \geq n} A_k \supset \cup_{k \geq m} A)k\) if \(n \geq m\). Hence, by the continuity of measures, we can pull out the limit:&lt;/p&gt;
+
+\[P(\cap_{n=1}^\infty \cup_{k \geq n} A_k) = \lim_{n \to \infty} P(\cup_{k \geq n} A_k).\]
+
+&lt;p&gt;Now, each for each \(n\), we have&lt;/p&gt;
+
+\[P(\cup_{k \geq n} A_k) \leq \sum_{k=n}^\infty P(A_k)\]
+
+&lt;p&gt;by the sub-additivity property of measures. Since the total sum \(\sum_{k=1}^\infty P(A_k)\) is assumed to be finite, the tail sums \(\sum_{k = n}^\infty P(A_k)\) must converge to zero as \(n \to \infty\). We conclude that&lt;/p&gt;
+
+\[P(\limsup_{n \to \infty} A_n) = 0,\]
+
+&lt;p&gt;as we wanted.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Corollary 1 (Unlikely Events are Equally as Unlikely in Dominated Measures)&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Suppose \(Q\) is another measure on \(\mathcal{F}\) and \(P\) dominates \(Q\) (i.e., \(P &amp;gt;&amp;gt; Q\)). Then for all \(\varepsilon &amp;gt; 0\), there exists \(\delta &amp;gt; 0\) such that&lt;/p&gt;
+
+\[P(A) &amp;lt; \delta \implies Q(A) &amp;lt; \varepsilon.\]
+
+&lt;p&gt;We interpret this condition probabilistically as follows: unlikely events under \(P\) forces those same events to be unlikely under any dominated measure \(Q\). This makes sense, but how would we prove this?&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Proof&lt;/em&gt;: We begin by contradiciton. Suppose there exists some \(\varepsilon_0 &amp;gt; 0\) such that for all \(k \in \mathbb{N}\), we have a sequence of measurable sets \(A_k\) with&lt;/p&gt;
+
+\[P(A_k) &amp;lt; 2^{-k} \quad \text{but} \quad Q(A_k) \geq \varepsilon_0 &amp;gt; 0.\]
+
+&lt;p&gt;Define \(A := \limsup_{n \to \infty} A_n = \cap_{n=1}^\infty \cup_{k \geq n} A_k\). Then&lt;/p&gt;
+
+\[Q(A) = Q(\limsup_{n \to \infty} A_n) \\
+=^{(*)} \lim_{n \to \infty} Q(\cup_{k \geq n}A_k) \\
+\geq^{(**)} Q(A_n) \quad \text{for all } n \in \mathbb{N}, \\
+\geq \varepsilon_0 &amp;gt; 0,\]
+
+&lt;p&gt;where in Step \((*)\) we used the continuity of the measure \(Q\) (again, the unions of \(A_k\) is a decreasing sequeunce), and in Step \((**)\) we the fact that every union \(\cup_{k \geq n} A_k\) contains \(A_n\). However, we must have \(P(A) = 0\) by the Borel-Cantelli lemma, since 
+\(\sum_{k=1}^\infty P(A_k) &amp;lt; \sum_{k=1}^\infty 2^{-k} &amp;lt; 1 &amp;lt; \infty.\)&lt;/p&gt;
+
+&lt;p&gt;This contradicts the fact that \(P &amp;gt;&amp;gt; Q\), since we have a set of measure zero under \(P\) that does not have measure zero under \(Q\). This completes the proof.&lt;/p&gt;
+
+&lt;p&gt;That’s all for today’s post!&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise.</summary></entry><entry><title type="html">Anomaly Detection Project: Completion!</title><link href="http://localhost:4000/anomaly/detection/2022/03/10/Anomaly_Detection.html" rel="alternate" type="text/html" title="Anomaly Detection Project: Completion!" /><published>2022-03-10T01:00:00+11:00</published><updated>2022-03-10T01:00:00+11:00</updated><id>http://localhost:4000/anomaly/detection/2022/03/10/Anomaly_Detection</id><content type="html" xml:base="http://localhost:4000/anomaly/detection/2022/03/10/Anomaly_Detection.html">&lt;p&gt;Recently, I had the pleasure of being part of the team that submitted our results and working prototypes for the “AI for Decision-Making” (Stage 1 Phase 2) project proposed by the &lt;a href=&quot;https://defenceinnovationnetwork.com/&quot;&gt;Defence Innovation Network&lt;/a&gt;, a University-Defence lead iniative to provide funding for projects with relevance to Australian Defence.&lt;/p&gt;
+
+&lt;p&gt;You can find our work, with demonstrations, in our &lt;a href=&quot;https://github.com/sjmluo/Contextually_Situated_Anomaly_Detection&quot;&gt;repository&lt;/a&gt;. We also wrote up a series of blog posts, aimed at introducing people to our work without getting overly technical. You can find this hosted &lt;a href=&quot;https://sjmluo.github.io/anomaly/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the future, I will write up my learnings from this project and on anomaly detection as a whole, to both remember and showcase the work we had done and how it might be applied and extended. Stay tuned!&lt;/p&gt;
+
+&lt;h1 id=&quot;images&quot;&gt;Images&lt;/h1&gt;
+&lt;p&gt;Some cool images from our work!&lt;/p&gt;
+
+&lt;figure&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/CAC_responses.jpg&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;Figure 1: With the appropriate data transformations, we can convert incoming time series signals from a sensor array into an anomaly predictor, with each sensor producing each one of these curves. The peaks of the curves correspond to likely anomalous transitions.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/combined_CAC_24.jpg&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;Figure 2: By leveraging multiple sources of data (in our experiments, 24 sensors worth of data), we can use data averaging techniques to combine the information effectively and obtain a smooth anomaly predictor that is robust against noise.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/smoothed_CAC_anim.gif&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+  &lt;figcaption&gt;Figure 3: We generalised our methods to work in real time by transforming sensor data in batches as it arrives. Peaks correspond to detected anomalies. Red lines correspond to the theoretical positions where an anomalous transition has taken place.&lt;/figcaption&gt;
+&lt;/figure&gt;</content><author><name>Tony Wang</name></author><category term="Anomaly" /><category term="Detection" /><summary type="html">Recently, I had the pleasure of being part of the team that submitted our results and working prototypes for the “AI for Decision-Making” (Stage 1 Phase 2) project proposed by the Defence Innovation Network, a University-Defence lead iniative to provide funding for projects with relevance to Australian Defence.</summary></entry><entry><title type="html">The Basics of Measure-Theoretic Probability Theory</title><link href="http://localhost:4000/probability/2022/03/09/Measure-Theory.html" rel="alternate" type="text/html" title="The Basics of Measure-Theoretic Probability Theory" /><published>2022-03-09T01:44:00+11:00</published><updated>2022-03-09T01:44:00+11:00</updated><id>http://localhost:4000/probability/2022/03/09/Measure-Theory</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/09/Measure-Theory.html">&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
+&lt;p&gt;As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, &lt;em&gt;the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem&lt;/em&gt;…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a &lt;em&gt;stopping time&lt;/em&gt; was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!&lt;/p&gt;
+
 &lt;h1 id=&quot;motivations&quot;&gt;Motivations&lt;/h1&gt;
+&lt;p&gt;Everyone knows what &lt;em&gt;probability&lt;/em&gt; means, in some intuitive sense. Primary schoolers learn how there’s a 50% chance rain on any given day (okay - at the time of writing, a years worth of rain has fallen in many areas in Australia, two weeks in a row. Maybe that’s not quite true…), first year undergrads learn about coin-flipping experiments and the binomial distribution, somewhere along the way we become acquainted with other common distributions (for example, the normal, exponential, Poisson, Gamma, beta families, in no particular order) and how we can use them to create simple models for many real-world situations, and at some point we just cross our fingers and hope all of our sums and integrals converge and everything is well-behaved. After all, as statistics practitioners, we can just leave that to the theoreticians, right?&lt;/p&gt;
 
-&lt;h1 id=&quot;measure-theory&quot;&gt;Measure Theory&lt;/h1&gt;
+&lt;p&gt;It’s certainly a common, if not justified, viewpoint to take - after all, we only have a finite amount of time in a day, and we couldn’t learn everything there is to know in this world. Personally speaking, I think my time is well-served by digging deep into the foundations, the formalisms and definitions, the bounds and estimates - I don’t want to know which levers to pull to make things “work”, I want to know &lt;em&gt;why&lt;/em&gt; they work. So - here it is!&lt;/p&gt;
 
-&lt;h2 id=&quot;notation&quot;&gt;Notation&lt;/h2&gt;
+&lt;h1 id=&quot;the-beginning&quot;&gt;The Beginning&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Definition 1&lt;/em&gt;: Let \(\Omega\) be a set. A \(\sigma\)-algebra \(\mathcal{F}\) on \(\Omega\) is a set of subsets of \(\Omega\) which satisfy the following properties:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;Write \(\Omega\) to denote an arbitrary set, \(\mathbb{R}^+\) to denote the interval \([0, \infty) \cup \infty = [0, \infty]\).&lt;/li&gt;
-  &lt;li&gt;\(\mathcal{A}\) denotes a $\sigma$-algebra on \(\Omega\).&lt;/li&gt;
+  &lt;li&gt;\(\mathcal{F}\) contains the total set \(\Omega\).&lt;/li&gt;
+  &lt;li&gt;\(\mathcal{F}\) is closed under complements: for every set \(A \in \mathcal{F}\), the set \(A^c\) is in \(\mathcal{F}\).&lt;/li&gt;
+  &lt;li&gt;\(\mathcal{F}\) is closed under countable unions: for sets \(A_i \in \mathcal{F}\), \(i \in I \subset \mathbb{N}\) with \(I\) a countable index set, we have \(\cup_{i \in I} A_i \in \mathcal{F}\).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Definition 1&lt;/strong&gt;: A function \(\mu : \mathcal{A} \to \mathbb{R}^+\) is a &lt;em&gt;measure&lt;/em&gt; if&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;\(\mu(\emptyset) = 0\),&lt;/li&gt;
-  &lt;li&gt;The function \(\mu\) satisfies countable additivity: for any countable collection \(\{U_n\}_{n \in \mathbb{N}} \subset \mathcal{A}\), we have&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;The \(\sigma\)-algebra is a key player in probability theory: intuitively speaking, it describes the set of events on which we can assign probabilities to (under this formalism, with very reasonable assumptions, we can indeed create “events” that cannot be assigned a probability! We call these “non-measurable” sets.). You can see it intuitively from the definition as well: if we know the probability of some event \(E\) occurring, then certainly we know the probability of \(E^c\) occurring. If we konw the probability of a (countable) number of events happening, then we could talk about the union of all these events occurring: that should have a well-defined probability as well.&lt;/p&gt;
 
-\[\mu(\cup_n U_n) = \sum_{n=0}^\infty \mu(U_n)\]</content><author><name>Tony Wang</name></author><category term="Mathematics" /><summary type="html">Hi! Currently under construction. Motivations</summary></entry><entry><title type="html">The Mysteries of MathJax: (Macros and Numbering)</title><link href="http://localhost:4000/blog/hosting/2021/09/16/First.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: (Macros and Numbering)" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/First</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/First.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
+&lt;p&gt;We also note that \(\sigma\)-algebras are also often called \(\sigma\)-fields in probability theory. We will use these terms interchangeably, although most often calling them \(\sigma\)-algebras (since this term applies in more contexts).&lt;/p&gt;
+
+&lt;p&gt;The rest is under construction! Check back later! :)&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">Background As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a stopping time was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!</summary></entry><entry><title type="html">Common Distributions</title><link href="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html" rel="alternate" type="text/html" title="Common Distributions" /><published>2022-03-09T01:44:00+11:00</published><updated>2022-03-09T01:44:00+11:00</updated><id>http://localhost:4000/probability/2022/03/09/List_of_Distributions</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html">&lt;p&gt;In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.&lt;/p&gt;
+
+&lt;p&gt;Each distribution will have its probability mass function (pmf) or probability density function (pdf) listed, mean and variance, and some notes on relations to other distributions and derivations.&lt;/p&gt;
+
+&lt;h1 id=&quot;measure-theoretic-view&quot;&gt;Measure-Theoretic View&lt;/h1&gt;
+&lt;p&gt;Suppose we are working with a process that has sample space \(\Omega\), set of measurable events \(\mathcal{F}\) and probability measure \(P\). A random variable \(X\) (taking values in \(\overline{\mathbb{R}} = \mathbb{R} \cup \{\infty\}\)) is just a measurable function \(X: \Omega \to \overline{\mathbb{R}}\). The expectation (or &lt;em&gt;mean&lt;/em&gt;) of \(X\) is the (Lebesgue) integral 
+\(\int_\Omega f \: dP,\) 
+defined in the usual way (this is discussed in a separate blog post). The &lt;em&gt;probability distribution&lt;/em&gt; of \(X\) is the function \(P \circ X^{-1} : \overline{\mathbb{R}} \to [0,1]\) (with respect to the usual Borel \(\sigma\)-algebra). The probability distribution describes how likely the random variable \(X\) is to take on some set of values. The &lt;em&gt;distribution function&lt;/em&gt; (or &lt;em&gt;cumulative distribution function&lt;/em&gt;) of \(X\) is defined as \(F(x) := $(P \circ X^{-1})((-\infty, x]))\), the probability that \(X\) takes on values up to and including \(x\).&lt;/p&gt;
+
+&lt;p&gt;Finally, a &lt;em&gt;probability density&lt;/em&gt; of \(X\) on \(\mathbb{R}\) is defined as follows. For a non-negative measurable \(f \geq 0\) on \((\Omega, \mathcal{F}, P)\), we can write \(f \cdot P\) to define a new measure \(\mu\) by&lt;/p&gt;
+
+&lt;p&gt;\(\mu (A) = (f \cdot P) (A) = \int_A f \: dP \quad \text{for all } A \in \mathcal{F}.\)
+We call \(f\) the \(P\)-density of \(\mu\). If the function \(f\) is the density of \(P \circ X^{-1}\) with respect to the Lebesgue measure on \(\mathbb{R}\), then \(f\) is called the &lt;em&gt;probability density function&lt;/em&gt; of \(X\).&lt;/p&gt;
+
+&lt;p&gt;The rest: to be completed!&lt;/p&gt;
+&lt;h1 id=&quot;discrete-probability-distributions&quot;&gt;Discrete Probability Distributions&lt;/h1&gt;
+
+&lt;h2 id=&quot;bernoulli-and-binomial-distributions&quot;&gt;Bernoulli and Binomial Distributions&lt;/h2&gt;
+
+&lt;h2 id=&quot;geometric-distribution&quot;&gt;Geometric Distribution&lt;/h2&gt;
+
+&lt;h2 id=&quot;hypergeometric-distribution&quot;&gt;Hypergeometric Distribution&lt;/h2&gt;
+
+&lt;h2 id=&quot;poisson-distribution&quot;&gt;Poisson Distribution&lt;/h2&gt;
+
+&lt;h1 id=&quot;continuous-probability-distributions&quot;&gt;Continuous Probability Distributions&lt;/h1&gt;
+
+&lt;h2 id=&quot;normal-distribution&quot;&gt;Normal Distribution&lt;/h2&gt;
+
+&lt;h2 id=&quot;beta-distribution&quot;&gt;Beta Distribution&lt;/h2&gt;
+
+&lt;h2 id=&quot;laplace-distribution&quot;&gt;Laplace Distribution&lt;/h2&gt;
+
+&lt;h2 id=&quot;exponential-distribution&quot;&gt;Exponential Distribution&lt;/h2&gt;
+
+&lt;h2 id=&quot;gamma-distribution&quot;&gt;Gamma Distribution&lt;/h2&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.</summary></entry><entry><title type="html">The Mysteries of MathJax: Macros and Numbering</title><link href="http://localhost:4000/blog/hosting/2021/09/16/MathJax.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: Macros and Numbering" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/MathJax</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/MathJax.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
 &lt;p&gt;I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts  (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!&lt;/p&gt;
 
 &lt;h2 id=&quot;system-requirements&quot;&gt;System Requirements&lt;/h2&gt;
@@ -126,4 +248,8 @@ In equation \eqref{123}, the equality holds for all \(\phi \in C_c^\infty(\Omega
 
 &lt;p&gt;% endhighlight %&lt;/p&gt;
 
-&lt;p&gt;while enclosing the top and bottom lines in braces {}.&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Blog" /><category term="Hosting" /><summary type="html">Site Setup I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!</summary></entry></feed>
+&lt;p&gt;while enclosing the top and bottom lines in braces {}.&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Blog" /><category term="Hosting" /><summary type="html">Site Setup I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!</summary></entry><entry><title type="html">Thesis Ramblings: PDE and Analysis</title><link href="http://localhost:4000/mathematics/2021/09/16/Thesis.html" rel="alternate" type="text/html" title="Thesis Ramblings: PDE and Analysis" /><published>2021-09-16T20:11:00+10:00</published><updated>2021-09-16T20:11:00+10:00</updated><id>http://localhost:4000/mathematics/2021/09/16/Thesis</id><content type="html" xml:base="http://localhost:4000/mathematics/2021/09/16/Thesis.html">&lt;p&gt;Whenever one is asked about their background and their studies, one always has to keep in mind their audience to decide how much to &lt;em&gt;really&lt;/em&gt; say. As much fun as it might be spouting off all kinds of technicalities and making &lt;em&gt;absolutely sure&lt;/em&gt; they won’t ask you about what you do again, it’s also important to be aware that not everyone has the necessary background, training, pre-requisites, or even just interest (just asking to be polite, man!) This is certainly not a bad thing - after all, our world can only be so delightfully varied because different people specialise in different things. It just makes things so much more interesting when one actually meets someone in the same field, and can go beyond superficialities. Like realising that one person shares one of your main hobbies, and suddenly they’re “in the know” in this secret world of yours (any tennis or bouldering fans around? Nadal is my top man, and I can climb pinks on a good day - sounds like absolute gibberish if you’re into none of these things!).&lt;/p&gt;
+
+&lt;p&gt;Nowadays, since I’m doing my Masters and focusing on statistics, it’s not too difficult to sprinkle some common lexicon words (data, statistics, machine learning, coding)…&lt;/p&gt;
+
+&lt;p&gt;The rest is under construction! Check back later :)&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Mathematics" /><summary type="html">Whenever one is asked about their background and their studies, one always has to keep in mind their audience to decide how much to really say. As much fun as it might be spouting off all kinds of technicalities and making absolutely sure they won’t ask you about what you do again, it’s also important to be aware that not everyone has the necessary background, training, pre-requisites, or even just interest (just asking to be polite, man!) This is certainly not a bad thing - after all, our world can only be so delightfully varied because different people specialise in different things. It just makes things so much more interesting when one actually meets someone in the same field, and can go beyond superficialities. Like realising that one person shares one of your main hobbies, and suddenly they’re “in the know” in this secret world of yours (any tennis or bouldering fans around? Nadal is my top man, and I can climb pinks on a good day - sounds like absolute gibberish if you’re into none of these things!).</summary></entry></feed>

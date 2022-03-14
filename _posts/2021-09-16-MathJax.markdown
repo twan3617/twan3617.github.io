@@ -1,7 +1,7 @@
 ---
 layout: post
 mathjax: true
-title:  "The Mysteries of MathJax: (Macros and Numbering)"
+title:  "The Mysteries of MathJax: Macros and Numbering"
 date:   2021-09-16 23:34:48 +1000
 categories: Blog Hosting
 author: Tony Wang 

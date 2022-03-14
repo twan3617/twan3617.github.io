@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      packages: ['base', 'ams', 'newcommand','configmacros'],
+      macros: {
+        RR: '{\\mathbb{R}}',
+        ddx: ['\\frac{d#2}{d#1}', 2, 'x']
+      }
+    },
+    loader: {
+      load: ['ui/menu', '[tex]/ams']
+    }
+  };
+  </script>
+  
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Infinitely Recurring Events occur with Probability Zero | A Mathematical Structure named “Blog”</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Infinitely Recurring Events occur with Probability Zero" />
+<meta name="author" content="Tony Wang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise." />
+<meta property="og:description" content="In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise." />
+<link rel="canonical" href="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html" />
+<meta property="og:url" content="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html" />
+<meta property="og:site_name" content="A Mathematical Structure named “Blog”" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-14T01:00:00+11:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Infinitely Recurring Events occur with Probability Zero" />
+<script type="application/ld+json">
+{"description":"In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise.","headline":"Infinitely Recurring Events occur with Probability Zero","dateModified":"2022-03-14T01:00:00+11:00","datePublished":"2022-03-14T01:00:00+11:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html"},"url":"http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html","author":{"@type":"Person","name":"Tony Wang"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="A Mathematical Structure named &quot;Blog&quot;" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">A Mathematical Structure named &quot;Blog&quot;</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Infinitely Recurring Events occur with Probability Zero</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-03-14T01:00:00+11:00" itemprop="datePublished">Mar 14, 2022
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Tony Wang</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise.</p>
+
+<p><em>Notation</em>: We work in an arbitrary measure space \((\Omega, \mathcal{F}, P)\) with \(\{A_n\}_{n \in \mathbb{N}}\) a sequence of measurable sets. While we interpret the measure \(P\) as a probability measure and measurable sets as “events” in the outcome space \(\Omega\), there is no explicit requirement that \(P(\Omega) = 1\) for the theory to work. The expectation \(\mathbb{E}\) refers to the integral operator</p>
+
+\[\mathbb{E}[f] = \int_\Omega f(\omega) \: dP(\omega).\]
+
+<p><em>Definition 1</em>: 
+The limit superior of a sequence of measurable sets \(\{A_n\}_{n \in \mathbb{N}}\) is the set</p>
+
+\[\limsup_{n \to \infty} A_n := \cap_{n=1}^\infty \cup_{k \geq n} A_k.\]
+
+<p>Intuitively speaking, the limit superior contains the set of events \(A_n\) which occur infinitely often - indeed, any events which occur finitely often can only be contained within a finite number of the unions \(\cup_{k \geq n} A_k\), and hence cannot be in the intersection of all of those unions. Going off of this intuition, probability theorists may also write this as \(A_n \text{i.o}\), standing for \(A_n\) infinitely often.</p>
+
+<p><em>Definition 2</em>:
+A measure \(P\) is said to dominate a measure \(Q\) (written \(P &gt;&gt; Q\)) if</p>
+
+\[P(A) = 0 \implies Q(A) = 0.\]
+
+<p><em>Lemma 1 (Borel-Cantelli Lemma)</em>: 
+Suppose \(\sum_{k=1}^n \mathbb{E}[A_n] &lt; \infty\). Then</p>
+
+\[P(\limsup_{n \to \infty} A_n) := P(\cap_{n=1}^\infty \cup_{k \geq n}A_k) = 0.\]
+
+<p><em>Proof</em>: Note that \(\cup_{k \geq n}A_k\) is a decreasing sequence of sets in \(n\), with \(\cup_{k \geq n} A_k \supset \cup_{k \geq m} A)k\) if \(n \geq m\). Hence, by the continuity of measures, we can pull out the limit:</p>
+
+\[P(\cap_{n=1}^\infty \cup_{k \geq n} A_k) = \lim_{n \to \infty} P(\cup_{k \geq n} A_k).\]
+
+<p>Now, each for each \(n\), we have</p>
+
+\[P(\cup_{k \geq n} A_k) \leq \sum_{k=n}^\infty P(A_k)\]
+
+<p>by the sub-additivity property of measures. Since the total sum \(\sum_{k=1}^\infty P(A_k)\) is assumed to be finite, the tail sums \(\sum_{k = n}^\infty P(A_k)\) must converge to zero as \(n \to \infty\). We conclude that</p>
+
+\[P(\limsup_{n \to \infty} A_n) = 0,\]
+
+<p>as we wanted.</p>
+
+<p><em>Corollary 1 (Unlikely Events are Equally as Unlikely in Dominated Measures)</em>:</p>
+
+<p>Suppose \(Q\) is another measure on \(\mathcal{F}\) and \(P\) dominates \(Q\) (i.e., \(P &gt;&gt; Q\)). Then for all \(\varepsilon &gt; 0\), there exists \(\delta &gt; 0\) such that</p>
+
+\[P(A) &lt; \delta \implies Q(A) &lt; \varepsilon.\]
+
+<p>We interpret this condition probabilistically as follows: unlikely events under \(P\) forces those same events to be unlikely under any dominated measure \(Q\). This makes sense, but how would we prove this?</p>
+
+<p><em>Proof</em>: We begin by contradiciton. Suppose there exists some \(\varepsilon_0 &gt; 0\) such that for all \(k \in \mathbb{N}\), we have a sequence of measurable sets \(A_k\) with</p>
+
+\[P(A_k) &lt; 2^{-k} \quad \text{but} \quad Q(A_k) \geq \varepsilon_0 &gt; 0.\]
+
+<p>Define \(A := \limsup_{n \to \infty} A_n = \cap_{n=1}^\infty \cup_{k \geq n} A_k\). Then</p>
+
+\[Q(A) = Q(\limsup_{n \to \infty} A_n) \\
+=^{(*)} \lim_{n \to \infty} Q(\cup_{k \geq n}A_k) \\
+\geq^{(**)} Q(A_n) \quad \text{for all } n \in \mathbb{N}, \\
+\geq \varepsilon_0 &gt; 0,\]
+
+<p>where in Step \((*)\) we used the continuity of the measure \(Q\) (again, the unions of \(A_k\) is a decreasing sequeunce), and in Step \((**)\) we the fact that every union \(\cup_{k \geq n} A_k\) contains \(A_n\). However, we must have \(P(A) = 0\) by the Borel-Cantelli lemma, since 
+\(\sum_{k=1}^\infty P(A_k) &lt; \sum_{k=1}^\infty 2^{-k} &lt; 1 &lt; \infty.\)</p>
+
+<p>This contradicts the fact that \(P &gt;&gt; Q\), since we have a set of measure zero under \(P\) that does not have measure zero under \(Q\). This completes the proof.</p>
+
+<p>That’s all for today’s post!</p>
+
+  </div><a class="u-url" href="/probability/2022/03/14/Borel-Cantelli.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">A Mathematical Structure named &quot;Blog&quot;</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">A Mathematical Structure named &quot;Blog&quot;</li><li><a class="u-email" href="mailto:tonywang205@yahoo.com.au">tonywang205@yahoo.com.au</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
+

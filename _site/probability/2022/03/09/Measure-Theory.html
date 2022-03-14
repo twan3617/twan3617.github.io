@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      packages: ['base', 'ams', 'newcommand','configmacros'],
+      macros: {
+        RR: '{\\mathbb{R}}',
+        ddx: ['\\frac{d#2}{d#1}', 2, 'x']
+      }
+    },
+    loader: {
+      load: ['ui/menu', '[tex]/ams']
+    }
+  };
+  </script>
+  
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>The Basics of Measure-Theoretic Probability Theory | A Mathematical Structure named “Blog”</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="The Basics of Measure-Theoretic Probability Theory" />
+<meta name="author" content="Tony Wang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Background As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a stopping time was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!" />
+<meta property="og:description" content="Background As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a stopping time was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!" />
+<link rel="canonical" href="http://localhost:4000/probability/2022/03/09/Measure-Theory.html" />
+<meta property="og:url" content="http://localhost:4000/probability/2022/03/09/Measure-Theory.html" />
+<meta property="og:site_name" content="A Mathematical Structure named “Blog”" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-09T01:44:00+11:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="The Basics of Measure-Theoretic Probability Theory" />
+<script type="application/ld+json">
+{"description":"Background As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a stopping time was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!","headline":"The Basics of Measure-Theoretic Probability Theory","dateModified":"2022-03-09T01:44:00+11:00","datePublished":"2022-03-09T01:44:00+11:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/probability/2022/03/09/Measure-Theory.html"},"url":"http://localhost:4000/probability/2022/03/09/Measure-Theory.html","author":{"@type":"Person","name":"Tony Wang"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="A Mathematical Structure named &quot;Blog&quot;" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">A Mathematical Structure named &quot;Blog&quot;</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">The Basics of Measure-Theoretic Probability Theory</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-03-09T01:44:00+11:00" itemprop="datePublished">Mar 9, 2022
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Tony Wang</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="background">Background</h1>
+<p>As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, <em>the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem</em>…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a <em>stopping time</em> was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!</p>
+
+<h1 id="motivations">Motivations</h1>
+<p>Everyone knows what <em>probability</em> means, in some intuitive sense. Primary schoolers learn how there’s a 50% chance rain on any given day (okay - at the time of writing, a years worth of rain has fallen in many areas in Australia, two weeks in a row. Maybe that’s not quite true…), first year undergrads learn about coin-flipping experiments and the binomial distribution, somewhere along the way we become acquainted with other common distributions (for example, the normal, exponential, Poisson, Gamma, beta families, in no particular order) and how we can use them to create simple models for many real-world situations, and at some point we just cross our fingers and hope all of our sums and integrals converge and everything is well-behaved. After all, as statistics practitioners, we can just leave that to the theoreticians, right?</p>
+
+<p>It’s certainly a common, if not justified, viewpoint to take - after all, we only have a finite amount of time in a day, and we couldn’t learn everything there is to know in this world. Personally speaking, I think my time is well-served by digging deep into the foundations, the formalisms and definitions, the bounds and estimates - I don’t want to know which levers to pull to make things “work”, I want to know <em>why</em> they work. So - here it is!</p>
+
+<h1 id="the-beginning">The Beginning</h1>
+
+<p><em>Definition 1</em>: Let \(\Omega\) be a set. A \(\sigma\)-algebra \(\mathcal{F}\) on \(\Omega\) is a set of subsets of \(\Omega\) which satisfy the following properties:</p>
+<ul>
+  <li>\(\mathcal{F}\) contains the total set \(\Omega\).</li>
+  <li>\(\mathcal{F}\) is closed under complements: for every set \(A \in \mathcal{F}\), the set \(A^c\) is in \(\mathcal{F}\).</li>
+  <li>\(\mathcal{F}\) is closed under countable unions: for sets \(A_i \in \mathcal{F}\), \(i \in I \subset \mathbb{N}\) with \(I\) a countable index set, we have \(\cup_{i \in I} A_i \in \mathcal{F}\).</li>
+</ul>
+
+<p>The \(\sigma\)-algebra is a key player in probability theory: intuitively speaking, it describes the set of events on which we can assign probabilities to (under this formalism, with very reasonable assumptions, we can indeed create “events” that cannot be assigned a probability! We call these “non-measurable” sets.). You can see it intuitively from the definition as well: if we know the probability of some event \(E\) occurring, then certainly we know the probability of \(E^c\) occurring. If we konw the probability of a (countable) number of events happening, then we could talk about the union of all these events occurring: that should have a well-defined probability as well.</p>
+
+<p>We also note that \(\sigma\)-algebras are also often called \(\sigma\)-fields in probability theory. We will use these terms interchangeably, although most often calling them \(\sigma\)-algebras (since this term applies in more contexts).</p>
+
+<p>The rest is under construction! Check back later! :)</p>
+
+
+  </div><a class="u-url" href="/probability/2022/03/09/Measure-Theory.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">A Mathematical Structure named &quot;Blog&quot;</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">A Mathematical Structure named &quot;Blog&quot;</li><li><a class="u-email" href="mailto:tonywang205@yahoo.com.au">tonywang205@yahoo.com.au</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
+
