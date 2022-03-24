@@ -20,7 +20,7 @@ The limit superior of a sequence of measurable sets $$\{A_n\}_{n \in \mathbb{N}}
 
 $$\limsup_{n \to \infty} A_n := \cap_{n=1}^\infty \cup_{k \geq n} A_k.$$
 
-Intuitively speaking, the limit superior contains the set of events $$A_n$$ which occur infinitely often - indeed, any events which occur finitely often can only be contained within a finite number of the unions $$\cup_{k \geq n} A_k$$, and hence cannot be in the intersection of all of those unions. Going off of this intuition, probability theorists may also write this as $$ A_n \text{i.o}$$, standing for $$A_n$$ infinitely often.
+Intuitively speaking, the limit superior contains the set of events $$A_n$$ which occur infinitely often in the sequence $$\{A_k\}_{k \in \mathbb{N}}$$ - indeed, any event which occurs finitely often can only be contained within a finite number of the unions $$\cup_{k \geq n} A_k$$, and hence cannot be in the intersection of all of those unions. Going off of this intuition, probability theorists may also write this as $$ A_n \text{ i.o}$$, standing for "$$A_n$$ infinitely often".
 
 _Definition 2_:
 A measure $$P$$ is said to dominate a measure $$Q$$ (written $$P >> Q$$) if 
@@ -63,7 +63,7 @@ $$
 
 We interpret this condition probabilistically as follows: unlikely events under $$P$$ forces those same events to be unlikely under any dominated measure $$Q$$. This makes sense, but how would we prove this?
 
-_Proof_: We begin by contradiciton. Suppose there exists some $$\varepsilon_0 > 0$$ such that for all $$k \in \mathbb{N}$$, we have a sequence of measurable sets $$A_k$$ with 
+_Proof_: We argue by contradiction. Suppose there exists some $$\varepsilon_0 > 0$$ such that for all $$k \in \mathbb{N}$$, we have a sequence of measurable sets $$A_k$$ with 
 
 $$
 P(A_k) < 2^{-k} \quad \text{but} \quad Q(A_k) \geq \varepsilon_0 > 0.

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      packages: ['base', 'ams', 'newcommand','configmacros'],
+      macros: {
+        RR: '{\\mathbb{R}}',
+        ddx: ['\\frac{d#2}{d#1}', 2, 'x']
+      }
+    },
+    loader: {
+      load: ['ui/menu', '[tex]/ams']
+    }
+  };
+  </script>
+  
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks | A Mathematical Structure named “Blog”</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks" />
+<meta name="author" content="Tony Wang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Context" />
+<meta property="og:description" content="Context" />
+<link rel="canonical" href="http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html" />
+<meta property="og:url" content="http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html" />
+<meta property="og:site_name" content="A Mathematical Structure named “Blog”" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-09T01:44:00+11:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks" />
+<script type="application/ld+json">
+{"description":"Context","headline":"Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks","dateModified":"2022-03-09T01:44:00+11:00","datePublished":"2022-03-09T01:44:00+11:00","url":"http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html"},"author":{"@type":"Person","name":"Tony Wang"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="A Mathematical Structure named &quot;Blog&quot;" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">A Mathematical Structure named &quot;Blog&quot;</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-03-09T01:44:00+11:00" itemprop="datePublished">Mar 9, 2022
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Tony Wang</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="context">Context</h1>
+
+<p>As a part of my work in the <a href="https://twan3617.github.io/anomaly/detection/2022/03/09/Anomaly_Detection.html">Anomaly Detection Project</a>, I looked at ways of benchmarking our algorithms performance with standard anomaly detection algorithms in the sensor array literature. One particular model that struck me as interesting was the 1D convolution network (for literature references, see <a href="https://www.sciencedirect.com/science/article/pii/S0022460X18301792">1</a> and <a href="https://www.sciencedirect.com/science/article/pii/S0888327020307846">2</a>). I was already familiar with the widespread use of 2D convolutions for object detection in computer vision, but had never thought about how these convolutions might be used in time series analysis.</p>
+
+<p>Time series data is often some of the more difficult data to analyse from a statistical point of view. There is often a large quantity of data points; data compression is almost always necessary for computational power, and any model we use must take into account the autocorrelation (i.e. correlation in time) of the data. Feature extraction is a common first step in analysing time series; this involves compressing a given time series into a number of features which (hopefully) characterise the data without losing any information. Future analyses would focus on working with this set of features with typical statistical techniques such as clustering (k-means), machine learning algorithms (random forests, support vector machines, neural networks), regression and so on. However, this process is often fraught with danger. Features that return state-of-the-art results in one area often perform very poorly in another. For example, in our anomaly detection project, I tried to use state-of-the-art features for electroencephalogram (EEG) data classification (see <a href="https://www.sciencedirect.com/science/article/pii/S1746809420302299">3</a>) with a tuned SVM; in our (heavily noise-affected) domain, such features barely outperformed random guessing.</p>
+
+<p>This is where 1D convolution networks come in. 1D convolution networks remove the need for domain expertise and manpower spent on manual feature extraction. Feeding in raw time series data, 1D convolution networks process the data through multiple layers of “moving average windows” (filters) before combining the predictions in a final dense layer. By optimising the weights in each filter using standard backpropagation algorithms (ADAM), we can train a network to categorise time series data just as we do for images.</p>
+
+<p>Below, we discuss the theory in more depth, present some of my work in applying 1D convolution learning to supervised classification problems and evaluate their performance in the context of algorithm performance and applicability in anomaly detection.</p>
+
+<h1 id="theory">Theory</h1>
+
+<p><img src="/assets/convolve_operation.png" alt="TOP_PHOTO" width="100%" />
+The basic operation we need to be familiar with is the “convolution” operation. Given a 1D block of data, we can convolve it with a filter (or window) of weights, which just means to take the dot product of the two vectors together to obtain a single number. That’s all there is to it!</p>
+
+<p><img src="/assets/Time_Series_Filters.jpg" alt="TOP_PHOTO" width="100%" /></p>
+<p> We take a filter and slide it through the time series, taking the convolution at each step to produce a single number. The output of this filter will just be these numbers concatenated into a single vector, which produces another time series. Since this operation will reduce the size of the input, we can pad the original time series by adding in empty blocks (zeros) on the side so that the input and output time series are the same size.  </p>
+<p><img src="/assets/Time_Series_Multiple_Filters.png" alt="TOP_PHOTO" width="100%" /></p>
+<p> Now that we have convolution filters, we can build up a single convolution layer by stacking together multiple filters. Each filter has its own fixed set of weights independent of the weights of the other filters in its layer. The weights of each filter are optimised to capture some unique feature of the signal, analogous to how 2D convolution filters capture features such as edges in images. Each filter operates independently to the other filters and layers until the final dense layer.</p>
+<p><img src="/assets/1Dconvnet_architecture.jpg" alt="TOP_PHOTO" width="100%" /></p>
+<p>We use 1D max pooling layers in-between convolution layers to reduce computation complexity, and a final dense layer to combine all the features together. After the forward pass, we can evaluate the networks fitness using a loss function (usually mean square error or 0-1 loss), and use an optimisation algorithm to shift all the weights in each convolution layer in the direction that minimises this loss function. By stacking all of these layers together, we can create a deep end-to-end anomaly predictor which takes in raw data and outputs the most likely class directly. The image above is the network that was implemented in my project. </p>
+
+<h1 id="data-description">Data Description</h1>
+<p>I provide some implementations of 1D convolution networks in Tensorflow on a number of data sets. The first is the Sandia Laboratories Experimental Structure Data (the <em>bookshelf</em> data set), and the second is the Airbus Helicopter Anomalies Data set (the <em>helicopter</em> data set). In both cases, the goal is to categorise each time series into a class based on the amount of damage sustained by the structure. In the bookshelf data set, we are given the exact level of damage applied to the structure before the structure was shaken by a motor. In the helicopter data set, we are not given much information at all, aside from the true class of a given data point.</p>
+
+<h2 id="bookshelf-data-set">Bookshelf Data Set</h2>
+<p>The data description can be found <a href="/assets/Bookshelf.pdf">here</a>.</p>
+<h2 id="helicopter-data-set">Helicopter Data Set</h2>
+<p>See <a href="https://www.research-collection.ethz.ch/handle/20.500.11850/415151">here</a> for the source of the data.</p>
+<h1 id="implementation">Implementation</h1>
+<p>Please see <a href="https://github.com/twan3617/1D_conv_net_Analysis">my GitHub repository here</a> for the notebooks and code.</p>
+
+
+  </div><a class="u-url" href="/machine/learning/2022/03/09/The_1D_Convolution.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">A Mathematical Structure named &quot;Blog&quot;</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">A Mathematical Structure named &quot;Blog&quot;</li><li><a class="u-email" href="mailto:tonywang205@yahoo.com.au">tonywang205@yahoo.com.au</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
+

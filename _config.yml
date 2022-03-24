@@ -33,6 +33,7 @@ theme: minima
 plugins:
   - jekyll-figure
   - jekyll-feed
+  - jekyll-sitemap
 
 markdown: kramdown 
 
