@@ -146,7 +146,7 @@ $$
 and we can use Stirling's formula to expand the binomial: 
 
 $$
-\frac{1}{4^n} \binom{2n}{n}\right = \frac{1}{4^n} \left( \frac{(2n)!}{(n!)^2} \right) \approx \frac{1}{4^n} \frac{\sqrt{4\pi n} \left(\frac{2n}{e}\right)^{2n}}{2\pi n \left( \frac{n}{e} \right)^{2n}}, 
+\frac{1}{4^n} \binom{2n}{n}= \frac{1}{4^n} \left( \frac{(2n)!}{(n!)^2} \right) \approx \frac{1}{4^n} \frac{\sqrt{4\pi n} \left(\frac{2n}{e}\right)^{2n}}{2\pi n \left( \frac{n}{e} \right)^{2n}}, 
 $$
 
 which simplifies to $$\frac{1}{\sqrt{\pi n}}$$. That is to say, we have 
