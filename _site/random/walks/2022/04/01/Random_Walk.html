@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<script type="text/javascript">
+  window.MathJax = {
+    tex: {
+      tags: 'ams',
+      packages: ['base', 'ams', 'newcommand','configmacros'],
+      macros: {
+        RR: '{\\mathbb{R}}',
+        ddx: ['\\frac{d#2}{d#1}', 2, 'x']
+      }
+    },
+    loader: {
+      load: ['ui/menu', '[tex]/ams']
+    }
+  };
+  </script>
+  
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees) | A Mathematical Structure named “Blog”</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees)" />
+<meta name="author" content="Tony Wang" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Recently (March/April 2022), my stochastic processes class started discussing Markov processes and the concept of recurrence and transience. Some of the most well-known results in this area concern simple random walks on \(\mathbb{Z}^d\) and their transience and recurrence properties depending on the dimensions \(d\) (I have seen these referred to as Pòlya’s Random Walk Theorems online). The results of these theorems admit some very intriguing, easily accessible analogies: “drunk ants and men will surely find their way home, but a drunk bird may get lost forever”. In honour of how catchy this analogy is, I decided to write up a post with some definitions, proofs and silly pictures. Let’s do it!" />
+<meta property="og:description" content="Recently (March/April 2022), my stochastic processes class started discussing Markov processes and the concept of recurrence and transience. Some of the most well-known results in this area concern simple random walks on \(\mathbb{Z}^d\) and their transience and recurrence properties depending on the dimensions \(d\) (I have seen these referred to as Pòlya’s Random Walk Theorems online). The results of these theorems admit some very intriguing, easily accessible analogies: “drunk ants and men will surely find their way home, but a drunk bird may get lost forever”. In honour of how catchy this analogy is, I decided to write up a post with some definitions, proofs and silly pictures. Let’s do it!" />
+<link rel="canonical" href="http://localhost:4000/random/walks/2022/04/01/Random_Walk.html" />
+<meta property="og:url" content="http://localhost:4000/random/walks/2022/04/01/Random_Walk.html" />
+<meta property="og:site_name" content="A Mathematical Structure named “Blog”" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-04-01T01:00:00+11:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees)" />
+<script type="application/ld+json">
+{"description":"Recently (March/April 2022), my stochastic processes class started discussing Markov processes and the concept of recurrence and transience. Some of the most well-known results in this area concern simple random walks on \\(\\mathbb{Z}^d\\) and their transience and recurrence properties depending on the dimensions \\(d\\) (I have seen these referred to as Pòlya’s Random Walk Theorems online). The results of these theorems admit some very intriguing, easily accessible analogies: “drunk ants and men will surely find their way home, but a drunk bird may get lost forever”. In honour of how catchy this analogy is, I decided to write up a post with some definitions, proofs and silly pictures. Let’s do it!","headline":"Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees)","dateModified":"2022-04-01T01:00:00+11:00","datePublished":"2022-04-01T01:00:00+11:00","url":"http://localhost:4000/random/walks/2022/04/01/Random_Walk.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/random/walks/2022/04/01/Random_Walk.html"},"author":{"@type":"Person","name":"Tony Wang"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="A Mathematical Structure named &quot;Blog&quot;" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">A Mathematical Structure named &quot;Blog&quot;</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees)</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-04-01T01:00:00+11:00" itemprop="datePublished">Apr 1, 2022
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Tony Wang</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Recently (March/April 2022), my stochastic processes class started discussing Markov processes and the concept of recurrence and transience. Some of the most well-known results in this area concern simple random walks on \(\mathbb{Z}^d\) and their transience and recurrence properties depending on the dimensions \(d\) (I have seen these referred to as Pòlya’s Random Walk Theorems online). The results of these theorems admit some very intriguing, easily accessible analogies: “drunk ants and men will surely find their way home, but a drunk bird may get lost forever”. In honour of how catchy this analogy is, I decided to write up a post with some definitions, proofs and silly pictures. Let’s do it!</p>
+
+<p>We begin by defining a simple random walk. We will only concern ourselves with walks in time \(T = \{0,1,2, \dots\}\) and on the state space \(\mathbb{Z}^d\) for \(d \geq 1\).</p>
+
+<p><em>Definition 1.</em> A <em>simple random walk</em> is a discrete stochastic process \((X_n)_{n \in T}\) on the state space \(\mathbb{Z}^d\) such that at every time step, exactly \(1\) of the coordinates changes by \(+1\) or \(-1\), with all such transitions occurring with equal probability.</p>
+
+<p>For example, the simple random walk with \(d = 1\) starting at \(0\) is a sequence that increases by \(1\) or decreases by \(1\) with probability \(1/2\) each. The simple random walk on \(\mathbb{Z}^2\) starting at \((0,0)\) has four possible positions to move to in the first timestep (these are \((0,1), (1,0), (-1,0), (0,-1)\)) and hence each transition occurs with probability \(1/4\), and so on.</p>
+
+<p><em>Definition 2.</em> A simple random walk on \(\mathbb{Z}^d\) is said to be <em>recurrent</em> if, for any state \(x \in \mathbb{Z}^d\), the probability that the walk will return to \(x\) in finite time is equal to \(1\). Otherwise, it is said to be <em>transient</em>.</p>
+
+<p>Recurrent walks will always, at some point, find their way back to where they started. Conversely, transient walks have a positive probability of disappearing infinitely far away, never to return. We can write \(N_x\) to denote the random variable</p>
+
+\[N_x = \sum_{n=1}^\infty 1_{X_n}(x),\]
+
+<p>which represents the number of times the random walk returns to \(x\). In this notation, the recurrence property can be written as the fact that there exists some state \(x\) such that</p>
+
+\[P(N_x \geq 1) = 1\]
+
+<p>The <em>expected number of returns</em> is given by the expectation</p>
+
+\[\mathbb{E}N_x = \sum_{n=1}^\infty P(X_n = x)\]
+
+<p>Of course, we invoke Fubini’s theorem to justify the interchange of the infinite sum and expectation (I wouldn’t catch you doing this without justification, would I?). It can be shown that the expected number of returns \(\mathbb{E}N_x\) characterises recurrence in random walks (indeed, for Markov chains in general), with the following result:</p>
+
+<p><em>Proposition 1</em> 
+For simple random walks, we have the equivalence</p>
+
+\[\mathbb{E}N_x = \infty \text{ for any } x \in \mathbb{Z}^d \iff (X_n)_{n \in T} \text{ is recurrent.}\]
+
+<p><em>Proof</em>:
+Firstly, by the tail sum formula we can write the expected number of returns to \(x\) as the sum over the probabilities</p>
+
+\[\mathbb{E}N_x = \sum_{n \geq 1} P(N_x \geq n)\]
+
+<p>where \(P(N_x \geq n)\) denotes the probability that the number of returns to \(x\) is greater than \(n\).</p>
+
+<p>Write \(T_{x,n}\) as the random variable denoting the duration of the \(n\)th “excursion” from \(x\) (that is, after returning to \(x\) \(n-1\) times, how long does it take the walk to return to \(x\) next?). Then each \(T_{x,n}\) is independent and follows the same distribution for all \(n\). The probability that the number of returns to \(x\) being greater than \(n\) is given by</p>
+
+\[P(N_x \geq n \mid X_0 = 0)  \\
+= P(T_{x,1} &lt; \infty, P_{x,2}&lt; \infty , \dots, T_{x,n} &lt; \infty \mid X_0 = 0) \\
+= P(T_{x,1} &lt; \infty \mid X_0 = x)^n,\]
+
+<p>and so by the tail sum formula, we have</p>
+
+\[\mathbb{E}(N_x \mid X_0 = x) = \sum_{q \geq 1} P(T_{x,1} &lt; \infty \mid X_0=x)^q.\]
+
+<p>Of course, if \((X_n)_{n \in T}\) is recurrent, then \(P(T_{x,1} &lt; \infty \mid X_0 = x&gt;) = 1\), and so \(\mathbb{E}(N_x \mid X_0 = x) = \infty\). Conversely, if the walk is not recurrent, then \(P(T_{x,1} &lt; \infty \mid X_0 = x) &lt; 1\), and the sum in the formula above is just a convergent geometric series, which is finite. This finishes the proof.</p>
+
+<p>With this in hand, we turn to proving our main results of the day, for which we will need Stirling’s approximation:</p>
+
+<p><em>Lemma 1</em> (Stirling’s Approximation): For integer \(n \geq 1\), we have the approximation</p>
+
+\[n! \approx \sqrt{2\pi n}\left( \frac{n}{e}\right)^n.\]
+
+<p>Notation-wise, we write \(a(n) \approx b(n)\) if \(\frac{a(n)}{b(n)} \to 1\) as \(n \to \infty\). Generally speaking, most operations that work with equalities work with \(\approx\), which allows us to abuse notation with regards to manipulating expressions with \(\approx\). If in doubt, always remember we could rewrite \(\approx\) with an equivalent \(\varepsilon\)-type argument (which would be needlessly formal and obscure the intuition). With these background results in hand, we turn to stating and proving our main theorems of the day…</p>
+
+<p><em>Theorem 1 (Drunk Ants and Men)</em>: The simple random walk on \(\mathbb{Z}^d\) for \(d = 1, 2\) are recurrent.</p>
+
+<p>Here are two very relevant drawings before the proof:
+<img src="/assets/random_walk1d.png" alt="drawing1" width="100%" /></p>
+
+<p>A drunk ant finds his way home…</p>
+
+<p><img src="/assets/random_walk2d.png" alt="drawing" width="100%" /></p>
+
+<p>…and so too do does the drunk man (possibly taking a while longer than the ant).</p>
+
+<p><em>Proof</em>: We note that the simple random walk is symmetric in the sense that any state is equivalent to any other state, so we fix \(x = 0\) and show that \(x = 0\) is recurrent (the proof will then work for any arbitrary state; indeed, it can be shown that any state being recurrent implies all states are recurrent for <em>irreducible</em> Markov chains, but we do not go into this). We prove the results separately for \(d = 1\) and \(d = 2\). Both involve exactly the same idea: do some counting, compute \(\mathbb{E}N_x\) (or, at least, show it must converge) and sprinkle in Stirling’s formula liberally.</p>
+
+<p>For both cases, the random walks are <em>periodic with period 2</em> in the sense that making a return trip starting and ending at any given state only has positive probability for even steps: that is, \(p_{x,x}^{(2n)} &gt; 0\), where \(p_{x,x}^{(2n)}\) denotes the probability of starting then returning to \(x\) after exactly \(2n\) time-steps. Hence, to find \(\mathbb{E}N_0 = \sum_{n=1}^\infty P(X_{2n} = 0) = \sum_{n=1}^\infty p_{0,0}^{(2n)}\), we simply need to compute \(p_{0,0}^{(2n)}\).</p>
+
+<p>\(d=1\): 
+In order to return to \(0\) after \(2n\) steps, we need to take exactly \(n\) steps forward and \(n\) steps back. There are \(\binom{2n}{n}\) ways of doing this, with \(2^{2n}\) total possible paths (since at each time-step, there are \(2\) possible choices). This gives us</p>
+
+\[p_{0,0}^{(2n)} = \binom{2n}{n} \frac{1}{2^{2n}} \\
+= \frac{1}{2^{2n}} \frac{(2n)!}{(n!)^2}.\]
+
+<p>Using Stirling’s formula to approximate each factorial, we then have</p>
+
+\[\frac{(2n)!}{(n!)^2} = \frac{\sqrt{4n\pi}\left(\frac{2n}{e}\right)^{2n}}{2n\pi \left(\frac{n}{e}\right)^{2n}} \\
+= \frac{2^{2n}}{\sqrt{n \pi}},\]
+
+<p>and so</p>
+
+\[p_{0,0}^{(2n)} = \frac{1}{2^{2n}} \frac{2^{2n}}{\sqrt{n \pi}} = \frac{1}{\sqrt{n \pi}}.\]
+
+<p>Then</p>
+
+\[\mathbb{E}N_x = \sum_{n=1}^\infty p_{0,0}^{(2n)} = \sum_{n=1}^\infty\frac{1}{\sqrt{n \pi}} = \infty,\]
+
+<p>and so the \(d = 1\) simple walk is recurrent, as we wanted to show</p>
+
+<p>\(d = 2\): The proof method is the same. To return to the origin after exactly \(2n\) steps, the walk must balance every “up” step with a “down” step and a “left” step with a “right” step. If there were \(k\) up steps, and hence \(n-k\) left steps, there must be \(k\) down steps and \(n-k\) right steps. The number of ways of this occurring with \(k\) fixed is given by the multinomial</p>
+
+\[\binom{2n}{k,k,n-k,n-k} = \frac{(2n)!}{(k!)^2 ((n-k)!)^2},\]
+
+<p>with the total number of paths in \(2n\) steps given by \(4^{2n}\) (since there are \(4\) possible directions to go to in each time-step). Hence, summing over all possible values of \(k\), we get</p>
+
+\[p_{0,0}^{(2n)} = \frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2.\]
+
+<p>We can simplify the right-hand side as follows:</p>
+
+\[\frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2 = \frac{1}{4^{2n}} \sum_{n=1}^\infty  \frac{(2n)! (n!)^2}{(n!)^2(k!)^2 ((n-k)!)^2 \\
+= \frac{1}{4^{2n}} \binom{2n}{n} \sum_{k=0}^n \frac{(n!)^2}{(k!)^2 ((n-k)!)^2},\]
+
+<p>where the summation simplifies to \(\sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}\) (a slick way of seeing this is true is to do the following: pick \(n\) objects from \(2n\) total objects; this can be done in \(\binom{2n}{n}\) ways. Now split the \(2n\) objects into two groups of \(n\) each. We can pick the same \(n\) objects by picking \(i\) from the first group and \(n-i\) from the second group and varying over \(i\). Credits to this <a href="https://math.stackexchange.com/questions/320348/inductive-proof-that-2n-choose-n-sumn-choose-i2">post</a> for this proof!). Continuing on, we get</p>
+
+\[p_{0,0}^{(2n)} = \frac{1}{4^{2n}} \binom{2n}{n}^2 = \left(\frac{1}{4^n} \binom{2n}{n}\right)^2,\]
+
+<p>and we can use Stirling’s formula to expand the binomial:</p>
+
+\[\frac{1}{4^n} \binom{2n}{n}\right = \frac{1}{4^n} \left( \frac{(2n)!}{(n!)^2} \right) \approx \frac{1}{4^n} \frac{\sqrt{4\pi n} \left(\frac{2n}{e}\right)^{2n}}{2\pi n \left( \frac{n}{e} \right)^{2n}},\]
+
+<p>which simplifies to \(\frac{1}{\sqrt{\pi n}}\). That is to say, we have</p>
+
+\[p_{0,0}^{(2n)} \approx \frac{1}{n \pi} \implies \mathbb{E}[N_0 |X_0 = 0] = \sum_{n=1}^\infty \frac{1}{n\pi} = \infty,\]
+
+<p>and we conclude that the two-dimensional simple random walk is also recurrent, as we wanted.</p>
+
+<p><em>Remark on Theorem 1</em>: If we wanted to be <em>really</em> mysterious, we could say that drunk ants and men will always return home because the infinite sum \(\sum_n \frac{1}{\sqrt{n}}\) and the harmonic series \(\sum_n \frac{1}{n}\) diverges. Of course, there is far more that goes into it than just these divergence results…</p>
+
+<p><em>Theorem 2 (Lost drunk bees)</em>: The simple random walks on \(\mathbb{Z}^d\) for \(d \geq 3\) are transient. 
+Unfortunately, I will not be providing a proof of this result just yet. You see, proving Theorem 2 is part of an assignment problem set in my stochastic processes course, so after that is completed, I’ll write something up here!</p>
+
+<p>In the meantime, here is a bee: 
+<img src="/assets/random_walk3d.png" alt="drawing2" width="100%" /></p>
+
+
+  </div><a class="u-url" href="/random/walks/2022/04/01/Random_Walk.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">A Mathematical Structure named &quot;Blog&quot;</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">A Mathematical Structure named &quot;Blog&quot;</li><li><a class="u-email" href="mailto:tonywang205@yahoo.com.au">tonywang205@yahoo.com.au</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
+
