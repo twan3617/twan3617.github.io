@@ -1,6 +1,18 @@
-<p>Recently, I had the pleasure of being part of the team that submitted our results and working prototypes for the “AI for Decision-Making” (Stage 1 Phase 2) project proposed by the Defence Innovation Network, a University-Defence lead iniative to provide funding for projects with relevance to Australian Defence.</p>
+<p>Recently, I had the pleasure of being part of the team that submitted our results and working prototypes for the “AI for Decision-Making” (Stage 1 Phase 2) project proposed by the <a href="https://defenceinnovationnetwork.com/">Defence Innovation Network</a>, a University-Defence lead iniative to provide funding for projects with relevance to Australian Defence.</p>
 
-<p>You can find our work, with demonstrations, at https://github.com/sjmluo/Contextually_Situated_Anomaly_Detection. There is also going to be a blog post, which is to be hosted at sjmluo.github.io/anomaly/.</p>
+<p>You can find our work, with demonstrations, in our <a href="https://github.com/sjmluo/Contextually_Situated_Anomaly_Detection">repository</a>. We also wrote up a series of blog posts, aimed at introducing people to our work without getting overly technical. You can find this hosted <a href="https://sjmluo.github.io/anomaly/">here</a>.</p>
 
 <p>In the future, I will write up my learnings from this project and on anomaly detection as a whole, to both remember and showcase the work we had done and how it might be applied and extended. Stay tuned!</p>
 
+<h1 id="images">Images</h1>
+<p>Some cool images from our work!</p>
+
+<p><img src="/assets/CAC_responses.jpg" alt="TOP_PHOTO" width="100%" />
+Figure 1: With the appropriate data transformations, we can convert incoming time series signals from a sensor array into an anomaly predictor, with each sensor producing each one of these curves. The peaks of the curves correspond to likely anomalous transitions.</p>
+
+<p><img src="/assets/combined_CAC_24.jpg" alt="TOP_PHOTO" width="100%" /></p>
+
+<p>Figure 2: By leveraging multiple sources of data (in our experiments, 24 sensors worth of data), we can use data averaging techniques to combine the information effectively and obtain a smooth anomaly predictor that is robust against noise.</p>
+
+<p><img src="/assets/smoothed_CAC_anim.gif" alt="TOP_PHOTO" width="100%" />
+Figure 3: We generalised our methods to work in real time by transforming sensor data in batches as it arrives. Peaks correspond to detected anomalies. Red lines correspond to the theoretical positions where an anomalous transition has taken place.</p>

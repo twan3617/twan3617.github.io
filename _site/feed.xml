@@ -1,4 +1,129 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-03-24T15:46:17+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">Infinitely Recurring Events occur with Probability Zero</title><link href="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html" rel="alternate" type="text/html" title="Infinitely Recurring Events occur with Probability Zero" /><published>2022-03-14T01:00:00+11:00</published><updated>2022-03-14T01:00:00+11:00</updated><id>http://localhost:4000/probability/2022/03/14/Borel-Cantelli</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html">&lt;p&gt;In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-02T14:03:57+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">A Mathematical Structure named “Blog”</title><subtitle>Hi! Welcome to my website. I am hoping to post content related to mathematics and statistics here during my studies and beyond.  Hosted on Github Pages using Jekyll. Mathematical equations are displayed with MathJax.</subtitle><entry><title type="html">Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees)</title><link href="http://localhost:4000/random/walks/2022/04/01/Random_Walk.html" rel="alternate" type="text/html" title="Recurrence and Transience in Simple Random Walks (The Adventures of Drunk Ants, Men and Bees)" /><published>2022-04-01T01:00:00+11:00</published><updated>2022-04-01T01:00:00+11:00</updated><id>http://localhost:4000/random/walks/2022/04/01/Random_Walk</id><content type="html" xml:base="http://localhost:4000/random/walks/2022/04/01/Random_Walk.html">&lt;p&gt;Recently (March/April 2022), my stochastic processes class started discussing Markov processes and the concept of recurrence and transience. Some of the most well-known results in this area concern simple random walks on \(\mathbb{Z}^d\) and their transience and recurrence properties depending on the dimensions \(d\) (I have seen these referred to as Pòlya’s Random Walk Theorems online). The results of these theorems admit some very intriguing, easily accessible analogies: “drunk ants and men will surely find their way home, but a drunk bird may get lost forever”. In honour of how catchy this analogy is, I decided to write up a post with some definitions, proofs and silly pictures. Let’s do it!&lt;/p&gt;
+
+&lt;p&gt;We begin by defining a simple random walk. We will only concern ourselves with walks in time \(T = \{0,1,2, \dots\}\) and on the state space \(\mathbb{Z}^d\) for \(d \geq 1\).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Definition 1.&lt;/em&gt; A &lt;em&gt;simple random walk&lt;/em&gt; is a discrete stochastic process \((X_n)_{n \in T}\) on the state space \(\mathbb{Z}^d\) such that at every time step, exactly \(1\) of the coordinates changes by \(+1\) or \(-1\), with all such transitions occurring with equal probability.&lt;/p&gt;
+
+&lt;p&gt;For example, the simple random walk with \(d = 1\) starting at \(0\) is a sequence that increases by \(1\) or decreases by \(1\) with probability \(1/2\) each. The simple random walk on \(\mathbb{Z}^2\) starting at \((0,0)\) has four possible positions to move to in the first timestep (these are \((0,1), (1,0), (-1,0), (0,-1)\)) and hence each transition occurs with probability \(1/4\), and so on.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Definition 2.&lt;/em&gt; A simple random walk on \(\mathbb{Z}^d\) is said to be &lt;em&gt;recurrent&lt;/em&gt; if, for any state \(x \in \mathbb{Z}^d\), the probability that the walk will return to \(x\) in finite time is equal to \(1\). Otherwise, it is said to be &lt;em&gt;transient&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Recurrent walks will always, at some point, find their way back to where they started. Conversely, transient walks have a positive probability of disappearing infinitely far away, never to return. We can write \(N_x\) to denote the random variable&lt;/p&gt;
+
+\[N_x = \sum_{n=1}^\infty 1_{X_n}(x),\]
+
+&lt;p&gt;which represents the number of times the random walk returns to \(x\). In this notation, the recurrence property can be written as the fact that there exists some state \(x\) such that&lt;/p&gt;
+
+\[P(N_x \geq 1) = 1\]
+
+&lt;p&gt;The &lt;em&gt;expected number of returns&lt;/em&gt; is given by the expectation&lt;/p&gt;
+
+\[\mathbb{E}N_x = \sum_{n=1}^\infty P(X_n = x)\]
+
+&lt;p&gt;Of course, we invoke Fubini’s theorem to justify the interchange of the infinite sum and expectation (I wouldn’t catch you doing this without justification, would I?). It can be shown that the expected number of returns \(\mathbb{E}N_x\) characterises recurrence in random walks (indeed, for Markov chains in general), with the following result:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Proposition 1&lt;/em&gt; 
+For simple random walks, we have the equivalence&lt;/p&gt;
+
+\[\mathbb{E}N_x = \infty \text{ for any } x \in \mathbb{Z}^d \iff (X_n)_{n \in T} \text{ is recurrent.}\]
+
+&lt;p&gt;&lt;em&gt;Proof&lt;/em&gt;:
+Firstly, by the tail sum formula we can write the expected number of returns to \(x\) as the sum over the probabilities&lt;/p&gt;
+
+\[\mathbb{E}N_x = \sum_{n \geq 1} P(N_x \geq n)\]
+
+&lt;p&gt;where \(P(N_x \geq n)\) denotes the probability that the number of returns to \(x\) is greater than \(n\).&lt;/p&gt;
+
+&lt;p&gt;Write \(T_{x,n}\) as the random variable denoting the duration of the \(n\)th “excursion” from \(x\) (that is, after returning to \(x\) \(n-1\) times, how long does it take the walk to return to \(x\) next?). Then each \(T_{x,n}\) is independent and follows the same distribution for all \(n\). The probability that the number of returns to \(x\) being greater than \(n\) is given by&lt;/p&gt;
+
+\[P(N_x \geq n \mid X_0 = 0)  \\
+= P(T_{x,1} &amp;lt; \infty, P_{x,2}&amp;lt; \infty , \dots, T_{x,n} &amp;lt; \infty \mid X_0 = 0) \\
+= P(T_{x,1} &amp;lt; \infty \mid X_0 = x)^n,\]
+
+&lt;p&gt;and so by the tail sum formula, we have&lt;/p&gt;
+
+\[\mathbb{E}(N_x \mid X_0 = x) = \sum_{q \geq 1} P(T_{x,1} &amp;lt; \infty \mid X_0=x)^q.\]
+
+&lt;p&gt;Of course, if \((X_n)_{n \in T}\) is recurrent, then \(P(T_{x,1} &amp;lt; \infty \mid X_0 = x&amp;gt;) = 1\), and so \(\mathbb{E}(N_x \mid X_0 = x) = \infty\). Conversely, if the walk is not recurrent, then \(P(T_{x,1} &amp;lt; \infty \mid X_0 = x) &amp;lt; 1\), and the sum in the formula above is just a convergent geometric series, which is finite. This finishes the proof.&lt;/p&gt;
+
+&lt;p&gt;With this in hand, we turn to proving our main results of the day, for which we will need Stirling’s approximation:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Lemma 1&lt;/em&gt; (Stirling’s Approximation): For integer \(n \geq 1\), we have the approximation&lt;/p&gt;
+
+\[n! \approx \sqrt{2\pi n}\left( \frac{n}{e}\right)^n.\]
+
+&lt;p&gt;Notation-wise, we write \(a(n) \approx b(n)\) if \(\frac{a(n)}{b(n)} \to 1\) as \(n \to \infty\). Generally speaking, most operations that work with equalities work with \(\approx\), which allows us to abuse notation with regards to manipulating expressions with \(\approx\). If in doubt, always remember we could rewrite \(\approx\) with an equivalent \(\varepsilon\)-type argument (which would be needlessly formal and obscure the intuition). With these background results in hand, we turn to stating and proving our main theorems of the day…&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Theorem 1 (Drunk Ants and Men)&lt;/em&gt;: The simple random walk on \(\mathbb{Z}^d\) for \(d = 1, 2\) are recurrent.&lt;/p&gt;
+
+&lt;p&gt;Here are two very relevant drawings before the proof:
+&lt;img src=&quot;/assets/random_walk1d.png&quot; alt=&quot;drawing1&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A drunk ant finds his way home…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/random_walk2d.png&quot; alt=&quot;drawing&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;…and so too do does the drunk man (possibly taking a while longer than the ant).&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Proof&lt;/em&gt;: We note that the simple random walk is symmetric in the sense that any state is equivalent to any other state, so we fix \(x = 0\) and show that \(x = 0\) is recurrent (the proof will then work for any arbitrary state; indeed, it can be shown that any state being recurrent implies all states are recurrent for &lt;em&gt;irreducible&lt;/em&gt; Markov chains, but we do not go into this). We prove the results separately for \(d = 1\) and \(d = 2\). Both involve exactly the same idea: do some counting, compute \(\mathbb{E}N_x\) (or, at least, show it must converge) and sprinkle in Stirling’s formula liberally.&lt;/p&gt;
+
+&lt;p&gt;For both cases, the random walks are &lt;em&gt;periodic with period 2&lt;/em&gt; in the sense that making a return trip starting and ending at any given state only has positive probability for even steps: that is, \(p_{x,x}^{(2n)} &amp;gt; 0\), where \(p_{x,x}^{(2n)}\) denotes the probability of starting then returning to \(x\) after exactly \(2n\) time-steps. Hence, to find \(\mathbb{E}N_0 = \sum_{n=1}^\infty P(X_{2n} = 0) = \sum_{n=1}^\infty p_{0,0}^{(2n)}\), we simply need to compute \(p_{0,0}^{(2n)}\).&lt;/p&gt;
+
+&lt;p&gt;\(d=1\): 
+In order to return to \(0\) after \(2n\) steps, we need to take exactly \(n\) steps forward and \(n\) steps back. There are \(\binom{2n}{n}\) ways of doing this, with \(2^{2n}\) total possible paths (since at each time-step, there are \(2\) possible choices). This gives us&lt;/p&gt;
+
+\[p_{0,0}^{(2n)} = \binom{2n}{n} \frac{1}{2^{2n}} \\
+= \frac{1}{2^{2n}} \frac{(2n)!}{(n!)^2}.\]
+
+&lt;p&gt;Using Stirling’s formula to approximate each factorial, we then have&lt;/p&gt;
+
+\[\frac{(2n)!}{(n!)^2} = \frac{\sqrt{4n\pi}\left(\frac{2n}{e}\right)^{2n}}{2n\pi \left(\frac{n}{e}\right)^{2n}} \\
+= \frac{2^{2n}}{\sqrt{n \pi}},\]
+
+&lt;p&gt;and so&lt;/p&gt;
+
+\[p_{0,0}^{(2n)} = \frac{1}{2^{2n}} \frac{2^{2n}}{\sqrt{n \pi}} = \frac{1}{\sqrt{n \pi}}.\]
+
+&lt;p&gt;Then&lt;/p&gt;
+
+\[\mathbb{E}N_x = \sum_{n=1}^\infty p_{0,0}^{(2n)} = \sum_{n=1}^\infty\frac{1}{\sqrt{n \pi}} = \infty,\]
+
+&lt;p&gt;and so the \(d = 1\) simple walk is recurrent, as we wanted to show&lt;/p&gt;
+
+&lt;p&gt;\(d = 2\): The proof method is the same. To return to the origin after exactly \(2n\) steps, the walk must balance every “up” step with a “down” step and a “left” step with a “right” step. If there were \(k\) up steps, and hence \(n-k\) left steps, there must be \(k\) down steps and \(n-k\) right steps. The number of ways of this occurring with \(k\) fixed is given by the multinomial&lt;/p&gt;
+
+\[\binom{2n}{k,k,n-k,n-k} = \frac{(2n)!}{(k!)^2 ((n-k)!)^2},\]
+
+&lt;p&gt;with the total number of paths in \(2n\) steps given by \(4^{2n}\) (since there are \(4\) possible directions to go to in each time-step). Hence, summing over all possible values of \(k\), we get&lt;/p&gt;
+
+\[p_{0,0}^{(2n)} = \frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2.\]
+
+&lt;p&gt;We can simplify the right-hand side as follows:&lt;/p&gt;
+
+\[\frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2 = \frac{1}{4^{2n}} \sum_{n=1}^\infty  \frac{(2n)! (n!)^2}{(n!)^2(k!)^2 ((n-k)!)^2 \\
+= \frac{1}{4^{2n}} \binom{2n}{n} \sum_{k=0}^n \frac{(n!)^2}{(k!)^2 ((n-k)!)^2},\]
+
+&lt;p&gt;where the summation simplifies to \(\sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}\) (a slick way of seeing this is true is to do the following: pick \(n\) objects from \(2n\) total objects; this can be done in \(\binom{2n}{n}\) ways. Now split the \(2n\) objects into two groups of \(n\) each. We can pick the same \(n\) objects by picking \(i\) from the first group and \(n-i\) from the second group and varying over \(i\). Credits to this &lt;a href=&quot;https://math.stackexchange.com/questions/320348/inductive-proof-that-2n-choose-n-sumn-choose-i2&quot;&gt;post&lt;/a&gt; for this proof!). Continuing on, we get&lt;/p&gt;
+
+\[p_{0,0}^{(2n)} = \frac{1}{4^{2n}} \binom{2n}{n}^2 = \left(\frac{1}{4^n} \binom{2n}{n}\right)^2,\]
+
+&lt;p&gt;and we can use Stirling’s formula to expand the binomial:&lt;/p&gt;
+
+\[\frac{1}{4^n} \binom{2n}{n}\right = \frac{1}{4^n} \left( \frac{(2n)!}{(n!)^2} \right) \approx \frac{1}{4^n} \frac{\sqrt{4\pi n} \left(\frac{2n}{e}\right)^{2n}}{2\pi n \left( \frac{n}{e} \right)^{2n}},\]
+
+&lt;p&gt;which simplifies to \(\frac{1}{\sqrt{\pi n}}\). That is to say, we have&lt;/p&gt;
+
+\[p_{0,0}^{(2n)} \approx \frac{1}{n \pi} \implies \mathbb{E}[N_0 |X_0 = 0] = \sum_{n=1}^\infty \frac{1}{n\pi} = \infty,\]
+
+&lt;p&gt;and we conclude that the two-dimensional simple random walk is also recurrent, as we wanted.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Remark on Theorem 1&lt;/em&gt;: If we wanted to be &lt;em&gt;really&lt;/em&gt; mysterious, we could say that drunk ants and men will always return home because the infinite sum \(\sum_n \frac{1}{\sqrt{n}}\) and the harmonic series \(\sum_n \frac{1}{n}\) diverges. Of course, there is far more that goes into it than just these divergence results…&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Theorem 2 (Lost drunk bees)&lt;/em&gt;: The simple random walks on \(\mathbb{Z}^d\) for \(d \geq 3\) are transient. 
+Unfortunately, I will not be providing a proof of this result just yet. You see, proving Theorem 2 is part of an assignment problem set in my stochastic processes course, so after that is completed, I’ll write something up here!&lt;/p&gt;
+
+&lt;p&gt;In the meantime, here is a bee: 
+&lt;img src=&quot;/assets/random_walk3d.png&quot; alt=&quot;drawing2&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Random" /><category term="Walks" /><summary type="html">Recently (March/April 2022), my stochastic processes class started discussing Markov processes and the concept of recurrence and transience. Some of the most well-known results in this area concern simple random walks on \(\mathbb{Z}^d\) and their transience and recurrence properties depending on the dimensions \(d\) (I have seen these referred to as Pòlya’s Random Walk Theorems online). The results of these theorems admit some very intriguing, easily accessible analogies: “drunk ants and men will surely find their way home, but a drunk bird may get lost forever”. In honour of how catchy this analogy is, I decided to write up a post with some definitions, proofs and silly pictures. Let’s do it!</summary></entry><entry><title type="html">Infinitely Recurring Events occur with Probability Zero</title><link href="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html" rel="alternate" type="text/html" title="Infinitely Recurring Events occur with Probability Zero" /><published>2022-03-14T01:00:00+11:00</published><updated>2022-03-14T01:00:00+11:00</updated><id>http://localhost:4000/probability/2022/03/14/Borel-Cantelli</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/14/Borel-Cantelli.html">&lt;p&gt;In this post, we give short proofs for the Borel-Cantelli lemma, which succinctly states that events which reoccur infinitely often in a sequence of events must have probability zero, and one of its consequences: unlikely events under one probability measure is unlikely in any probability measure “dominated” by it. We make all of these concepts precise.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Notation&lt;/em&gt;: We work in an arbitrary measure space \((\Omega, \mathcal{F}, P)\) with \(\{A_n\}_{n \in \mathbb{N}}\) a sequence of measurable sets. While we interpret the measure \(P\) as a probability measure and measurable sets as “events” in the outcome space \(\Omega\), there is no explicit requirement that \(P(\Omega) = 1\) for the theory to work. The expectation \(\mathbb{E}\) refers to the integral operator&lt;/p&gt;
 
@@ -97,7 +222,37 @@ Figure 3: We generalised our methods to work in real time by transforming sensor
 
 &lt;p&gt;We also note that \(\sigma\)-algebras are also often called \(\sigma\)-fields in probability theory. We will use these terms interchangeably, although most often calling them \(\sigma\)-algebras (since this term applies in more contexts).&lt;/p&gt;
 
-&lt;p&gt;The rest is under construction! Check back later! :)&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">Background As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a stopping time was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!</summary></entry><entry><title type="html">Common Distributions</title><link href="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html" rel="alternate" type="text/html" title="Common Distributions" /><published>2022-03-09T01:44:00+11:00</published><updated>2022-03-09T01:44:00+11:00</updated><id>http://localhost:4000/probability/2022/03/09/List_of_Distributions</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html">&lt;p&gt;In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.&lt;/p&gt;
+&lt;p&gt;The rest is under construction! Check back later! :)&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">Background As of 2022 Term 1, I am currently taking the course MATH5835, Advanced Stochastic Processes at USNW. It has been both an absolute joy and a struggle in the first four weeks of this course, often interchanging between the two. It is a joy because I had always wanted to go in-depth into measure-theoretic probability theory (there is a certain magical allure to saying something like, the conditional expectation exists and is unique almost surely by the Radon-Nikodym Theorem…), and a struggle since everything is so shrouded in the depths of abstraction (I really had to think about it when a stopping time was defined as a measurable map!). And, honestly speaking, when is learning anything ever not a struggle? This blog post, and everything after it, will follow my journey through this course and serve as my (public-facing) notebook, for jotting down thoughts, definitions and clarifications. Stay tuned!</summary></entry><entry><title type="html">Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks</title><link href="http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html" rel="alternate" type="text/html" title="Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks" /><published>2022-03-09T01:44:00+11:00</published><updated>2022-03-09T01:44:00+11:00</updated><id>http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution</id><content type="html" xml:base="http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html">&lt;h1 id=&quot;context&quot;&gt;Context&lt;/h1&gt;
+
+&lt;p&gt;As a part of my work in the &lt;a href=&quot;https://twan3617.github.io/anomaly/detection/2022/03/09/Anomaly_Detection.html&quot;&gt;Anomaly Detection Project&lt;/a&gt;, I looked at ways of benchmarking our algorithms performance with standard anomaly detection algorithms in the sensor array literature. One particular model that struck me as interesting was the 1D convolution network (for literature references, see &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S0022460X18301792&quot;&gt;1&lt;/a&gt; and &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S0888327020307846&quot;&gt;2&lt;/a&gt;). I was already familiar with the widespread use of 2D convolutions for object detection in computer vision, but had never thought about how these convolutions might be used in time series analysis.&lt;/p&gt;
+
+&lt;p&gt;Time series data is often some of the more difficult data to analyse from a statistical point of view. There is often a large quantity of data points; data compression is almost always necessary for computational power, and any model we use must take into account the autocorrelation (i.e. correlation in time) of the data. Feature extraction is a common first step in analysing time series; this involves compressing a given time series into a number of features which (hopefully) characterise the data without losing any information. Future analyses would focus on working with this set of features with typical statistical techniques such as clustering (k-means), machine learning algorithms (random forests, support vector machines, neural networks), regression and so on. However, this process is often fraught with danger. Features that return state-of-the-art results in one area often perform very poorly in another. For example, in our anomaly detection project, I tried to use state-of-the-art features for electroencephalogram (EEG) data classification (see &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S1746809420302299&quot;&gt;3&lt;/a&gt;) with a tuned SVM; in our (heavily noise-affected) domain, such features barely outperformed random guessing.&lt;/p&gt;
+
+&lt;p&gt;This is where 1D convolution networks come in. 1D convolution networks remove the need for domain expertise and manpower spent on manual feature extraction. Feeding in raw time series data, 1D convolution networks process the data through multiple layers of “moving average windows” (filters) before combining the predictions in a final dense layer. By optimising the weights in each filter using standard backpropagation algorithms (ADAM), we can train a network to categorise time series data just as we do for images.&lt;/p&gt;
+
+&lt;p&gt;Below, we discuss the theory in more depth, present some of my work in applying 1D convolution learning to supervised classification problems and evaluate their performance in the context of algorithm performance and applicability in anomaly detection.&lt;/p&gt;
+
+&lt;h1 id=&quot;theory&quot;&gt;Theory&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/convolve_operation.png&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;
+The basic operation we need to be familiar with is the “convolution” operation. Given a 1D block of data, we can convolve it with a filter (or window) of weights, which just means to take the dot product of the two vectors together to obtain a single number. That’s all there is to it!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/Time_Series_Filters.jpg&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; We take a filter and slide it through the time series, taking the convolution at each step to produce a single number. The output of this filter will just be these numbers concatenated into a single vector, which produces another time series. Since this operation will reduce the size of the input, we can pad the original time series by adding in empty blocks (zeros) on the side so that the input and output time series are the same size.  &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/Time_Series_Multiple_Filters.png&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; Now that we have convolution filters, we can build up a single convolution layer by stacking together multiple filters. Each filter has its own fixed set of weights independent of the weights of the other filters in its layer. The weights of each filter are optimised to capture some unique feature of the signal, analogous to how 2D convolution filters capture features such as edges in images. Each filter operates independently to the other filters and layers until the final dense layer.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/1Dconvnet_architecture.jpg&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;We use 1D max pooling layers in-between convolution layers to reduce computation complexity, and a final dense layer to combine all the features together. After the forward pass, we can evaluate the networks fitness using a loss function (usually mean square error or 0-1 loss), and use an optimisation algorithm to shift all the weights in each convolution layer in the direction that minimises this loss function. By stacking all of these layers together, we can create a deep end-to-end anomaly predictor which takes in raw data and outputs the most likely class directly. The image above is the network that was implemented in my project. &lt;/p&gt;
+
+&lt;h1 id=&quot;data-description&quot;&gt;Data Description&lt;/h1&gt;
+&lt;p&gt;I provide some implementations of 1D convolution networks in Tensorflow on a number of data sets. The first is the Sandia Laboratories Experimental Structure Data (the &lt;em&gt;bookshelf&lt;/em&gt; data set), and the second is the Airbus Helicopter Anomalies Data set (the &lt;em&gt;helicopter&lt;/em&gt; data set). In both cases, the goal is to categorise each time series into a class based on the amount of damage sustained by the structure. In the bookshelf data set, we are given the exact level of damage applied to the structure before the structure was shaken by a motor. In the helicopter data set, we are not given much information at all, aside from the true class of a given data point.&lt;/p&gt;
+
+&lt;h2 id=&quot;bookshelf-data-set&quot;&gt;Bookshelf Data Set&lt;/h2&gt;
+&lt;p&gt;The data description can be found &lt;a href=&quot;/assets/Bookshelf.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;helicopter-data-set&quot;&gt;Helicopter Data Set&lt;/h2&gt;
+&lt;p&gt;See &lt;a href=&quot;https://www.research-collection.ethz.ch/handle/20.500.11850/415151&quot;&gt;here&lt;/a&gt; for the source of the data.&lt;/p&gt;
+&lt;h1 id=&quot;implementation&quot;&gt;Implementation&lt;/h1&gt;
+&lt;p&gt;Please see &lt;a href=&quot;https://github.com/twan3617/1D_conv_net_Analysis&quot;&gt;my GitHub repository here&lt;/a&gt; for the notebooks and code.&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Machine" /><category term="Learning" /><summary type="html">Context</summary></entry><entry><title type="html">Common Distributions</title><link href="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html" rel="alternate" type="text/html" title="Common Distributions" /><published>2022-03-09T01:44:00+11:00</published><updated>2022-03-09T01:44:00+11:00</updated><id>http://localhost:4000/probability/2022/03/09/List_of_Distributions</id><content type="html" xml:base="http://localhost:4000/probability/2022/03/09/List_of_Distributions.html">&lt;p&gt;In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.&lt;/p&gt;
 
 &lt;p&gt;Each distribution will have its probability mass function (pmf) or probability density function (pdf) listed, mean and variance, and some notes on relations to other distributions and derivations.&lt;/p&gt;
 
@@ -182,37 +337,7 @@ mgf: \(M_X(t) = \exp(\lambda(\exp^t-1))\).&lt;/p&gt;
 
 &lt;h1 id=&quot;exponential-distribution&quot;&gt;Exponential Distribution&lt;/h1&gt;
 
-&lt;h1 id=&quot;gamma-distribution&quot;&gt;Gamma Distribution&lt;/h1&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.</summary></entry><entry><title type="html">Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks</title><link href="http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html" rel="alternate" type="text/html" title="Automatic Feature Extraction: An Introduction to Deep 1D Convolution Networks" /><published>2022-03-09T01:44:00+11:00</published><updated>2022-03-09T01:44:00+11:00</updated><id>http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution</id><content type="html" xml:base="http://localhost:4000/machine/learning/2022/03/09/The_1D_Convolution.html">&lt;h1 id=&quot;context&quot;&gt;Context&lt;/h1&gt;
-
-&lt;p&gt;As a part of my work in the &lt;a href=&quot;https://twan3617.github.io/anomaly/detection/2022/03/09/Anomaly_Detection.html&quot;&gt;Anomaly Detection Project&lt;/a&gt;, I looked at ways of benchmarking our algorithms performance with standard anomaly detection algorithms in the sensor array literature. One particular model that struck me as interesting was the 1D convolution network (for literature references, see &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S0022460X18301792&quot;&gt;1&lt;/a&gt; and &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S0888327020307846&quot;&gt;2&lt;/a&gt;). I was already familiar with the widespread use of 2D convolutions for object detection in computer vision, but had never thought about how these convolutions might be used in time series analysis.&lt;/p&gt;
-
-&lt;p&gt;Time series data is often some of the more difficult data to analyse from a statistical point of view. There is often a large quantity of data points; data compression is almost always necessary for computational power, and any model we use must take into account the autocorrelation (i.e. correlation in time) of the data. Feature extraction is a common first step in analysing time series; this involves compressing a given time series into a number of features which (hopefully) characterise the data without losing any information. Future analyses would focus on working with this set of features with typical statistical techniques such as clustering (k-means), machine learning algorithms (random forests, support vector machines, neural networks), regression and so on. However, this process is often fraught with danger. Features that return state-of-the-art results in one area often perform very poorly in another. For example, in our anomaly detection project, I tried to use state-of-the-art features for electroencephalogram (EEG) data classification (see &lt;a href=&quot;https://www.sciencedirect.com/science/article/pii/S1746809420302299&quot;&gt;3&lt;/a&gt;) with a tuned SVM; in our (heavily noise-affected) domain, such features barely outperformed random guessing.&lt;/p&gt;
-
-&lt;p&gt;This is where 1D convolution networks come in. 1D convolution networks remove the need for domain expertise and manpower spent on manual feature extraction. Feeding in raw time series data, 1D convolution networks process the data through multiple layers of “moving average windows” (filters) before combining the predictions in a final dense layer. By optimising the weights in each filter using standard backpropagation algorithms (ADAM), we can train a network to categorise time series data just as we do for images.&lt;/p&gt;
-
-&lt;p&gt;Below, we discuss the theory in more depth, present some of my work in applying 1D convolution learning to supervised classification problems and evaluate their performance in the context of algorithm performance and applicability in anomaly detection.&lt;/p&gt;
-
-&lt;h1 id=&quot;theory&quot;&gt;Theory&lt;/h1&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/convolve_operation.png&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;
-The basic operation we need to be familiar with is the “convolution” operation. Given a 1D block of data, we can convolve it with a filter (or window) of weights, which just means to take the dot product of the two vectors together to obtain a single number. That’s all there is to it!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/Time_Series_Filters.jpg&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
-&lt;p&gt; We take a filter and slide it through the time series, taking the convolution at each step to produce a single number. The output of this filter will just be these numbers concatenated into a single vector, which produces another time series. Since this operation will reduce the size of the input, we can pad the original time series by adding in empty blocks (zeros) on the side so that the input and output time series are the same size.  &lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/Time_Series_Multiple_Filters.png&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
-&lt;p&gt; Now that we have convolution filters, we can build up a single convolution layer by stacking together multiple filters. Each filter has its own fixed set of weights independent of the weights of the other filters in its layer. The weights of each filter are optimised to capture some unique feature of the signal, analogous to how 2D convolution filters capture features such as edges in images. Each filter operates independently to the other filters and layers until the final dense layer.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/1Dconvnet_architecture.jpg&quot; alt=&quot;TOP_PHOTO&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;We use 1D max pooling layers in-between convolution layers to reduce computation complexity, and a final dense layer to combine all the features together. After the forward pass, we can evaluate the networks fitness using a loss function (usually mean square error or 0-1 loss), and use an optimisation algorithm to shift all the weights in each convolution layer in the direction that minimises this loss function. By stacking all of these layers together, we can create a deep end-to-end anomaly predictor which takes in raw data and outputs the most likely class directly. The image above is the network that was implemented in my project. &lt;/p&gt;
-
-&lt;h1 id=&quot;data-description&quot;&gt;Data Description&lt;/h1&gt;
-&lt;p&gt;I provide some implementations of 1D convolution networks in Tensorflow on a number of data sets. The first is the Sandia Laboratories Experimental Structure Data (the &lt;em&gt;bookshelf&lt;/em&gt; data set), and the second is the Airbus Helicopter Anomalies Data set (the &lt;em&gt;helicopter&lt;/em&gt; data set). In both cases, the goal is to categorise each time series into a class based on the amount of damage sustained by the structure. In the bookshelf data set, we are given the exact level of damage applied to the structure before the structure was shaken by a motor. In the helicopter data set, we are not given much information at all, aside from the true class of a given data point.&lt;/p&gt;
-
-&lt;h2 id=&quot;bookshelf-data-set&quot;&gt;Bookshelf Data Set&lt;/h2&gt;
-&lt;p&gt;The data description can be found &lt;a href=&quot;/assets/Bookshelf.pdf&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;helicopter-data-set&quot;&gt;Helicopter Data Set&lt;/h2&gt;
-&lt;p&gt;See &lt;a href=&quot;https://www.research-collection.ethz.ch/handle/20.500.11850/415151&quot;&gt;here&lt;/a&gt; for the source of the data.&lt;/p&gt;
-&lt;h1 id=&quot;implementation&quot;&gt;Implementation&lt;/h1&gt;
-&lt;p&gt;Please see &lt;a href=&quot;https://github.com/twan3617/1D_conv_net_Analysis&quot;&gt;my GitHub repository here&lt;/a&gt; for the notebooks and code.&lt;/p&gt;</content><author><name>Tony Wang</name></author><category term="Machine" /><category term="Learning" /><summary type="html">Context</summary></entry><entry><title type="html">The Mysteries of MathJax: Macros and Numbering</title><link href="http://localhost:4000/blog/hosting/2021/09/16/MathJax.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: Macros and Numbering" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/MathJax</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/MathJax.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
+&lt;h1 id=&quot;gamma-distribution&quot;&gt;Gamma Distribution&lt;/h1&gt;</content><author><name>Tony Wang</name></author><category term="Probability" /><summary type="html">In this post, I will write about some of the key distributions that are used by statisticians. The aim is to not just have the formulas, but explain intuition, proofs and uses for these distributions. These will be added in as my time permits. I will mainly be using this page as a reference.</summary></entry><entry><title type="html">The Mysteries of MathJax: Macros and Numbering</title><link href="http://localhost:4000/blog/hosting/2021/09/16/MathJax.html" rel="alternate" type="text/html" title="The Mysteries of MathJax: Macros and Numbering" /><published>2021-09-16T23:34:48+10:00</published><updated>2021-09-16T23:34:48+10:00</updated><id>http://localhost:4000/blog/hosting/2021/09/16/MathJax</id><content type="html" xml:base="http://localhost:4000/blog/hosting/2021/09/16/MathJax.html">&lt;h1 id=&quot;site-setup&quot;&gt;Site Setup&lt;/h1&gt;
 &lt;p&gt;I decided to write this post as a reminder to future-me (and anyone else who might read this) about how this site was set up, and in particular, how to get MathJax working. This was a lengthy process, synthesising material from old 2012 StackExchange posts  (all slightly - but not completely - obsolete now) and dead-ends, and I don’t want to repeat the process whenever I come back to work on this site. If you know JavaScript/HTML/Ruby already, the process would probably much easier, but I don’t, so here goes!&lt;/p&gt;
 
 &lt;h2 id=&quot;system-requirements&quot;&gt;System Requirements&lt;/h2&gt;
