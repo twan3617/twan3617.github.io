@@ -171,11 +171,11 @@ In order to return to \(0\) after \(2n\) steps, we need to take exactly \(n\) st
 
 <p>with the total number of paths in \(2n\) steps given by \(4^{2n}\) (since there are \(4\) possible directions to go to in each time-step). Hence, summing over all possible values of \(k\), we get</p>
 
-\[p_{0,0}^{(2n)} = \frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2.\]
+\[p_{0,0}^{(2n)} = \frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2((n-k)!)^2}.\]
 
 <p>We can simplify the right-hand side as follows:</p>
 
-\[\frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2 = \frac{1}{4^{2n}} \sum_{n=1}^\infty  \frac{(2n)! (n!)^2}{(n!)^2(k!)^2 ((n-k)!)^2 \\
+\[\frac{1}{4^{2n}} \sum_{k=0}^n  \frac{(2n)!}{(k!)^2 ((n-k)!)^2} = \frac{1}{4^{2n}} \sum_{n=1}^\infty  \frac{(2n)! (n!)^2}{(n!)^2(k!)^2 ((n-k)!)^2} \\
 = \frac{1}{4^{2n}} \binom{2n}{n} \sum_{k=0}^n \frac{(n!)^2}{(k!)^2 ((n-k)!)^2},\]
 
 <p>where the summation simplifies to \(\sum_{k=0}^n \binom{n}{k}^2 = \binom{2n}{n}\) (a slick way of seeing this is true is to do the following: pick \(n\) objects from \(2n\) total objects; this can be done in \(\binom{2n}{n}\) ways. Now split the \(2n\) objects into two groups of \(n\) each. We can pick the same \(n\) objects by picking \(i\) from the first group and \(n-i\) from the second group and varying over \(i\). Credits to this <a href="https://math.stackexchange.com/questions/320348/inductive-proof-that-2n-choose-n-sumn-choose-i2">post</a> for this proof!). Continuing on, we get</p>
